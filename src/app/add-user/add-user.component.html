@@ -1,0 +1,32 @@
+<div class="container">
+    <h3>add-user works!</h3>
+    <form #adduser="ngForm" (ngSubmit)="addUser(adduser)">
+        <div class="form-group">
+            <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
+                placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" ngModel id="email" name="email" #email="ngModel"
+                placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" ngModel id="password" name="password" #password="ngModel"
+                placeholder="Enter password">
+        </div>
+        <div class="form-group" *ngIf="checkadmin">
+            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel">
+                <option disabled selected value>Select Branch</option>
+                <option *ngFor="let r of result.t" value={{r.id}}>{{r.id}}. {{r.name}}, {{r.city}}</option>
+            </select>
+        </div>
+        <div class="form-group" *ngIf="checkadmin">
+            <select class="form-control form-control-sm" ngModel id="role" name="role" #role="ngModel">
+                <option disabled selected value>Select role</option>
+                <option value="admin">Admin</option>
+                <option value="bm">Branch Manager</option>
+                <option value="staff">Staff Member</option>
+            </select><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

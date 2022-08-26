@@ -1,0 +1,15 @@
+<div class="container">
+    <h3>login works!</h3>
+    <form #logData="ngForm" (ngSubmit)="loginUser(logData)">
+        <div class="form-group">
+            <input type="text" class="form-control" ngModel id="email" name="email" #email="ngModel"
+                placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" ngModel id="password" name="password" #password="ngModel"
+                placeholder="Enter password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
