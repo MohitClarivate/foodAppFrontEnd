@@ -12,8 +12,6 @@ export class AppComponent {
   constructor(private router: Router, private user: UserService) {}
   title = 'foodApp';
 
-  isLoggedIn = this.user.isLoggedIn();
-
   logOut() {
     localStorage.removeItem('role');
     localStorage.removeItem('branch');

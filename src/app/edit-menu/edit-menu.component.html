@@ -1,0 +1,20 @@
+<div class="container">
+    <p>edit Menu!</p>
+    <form #edit="ngForm" (ngSubmit)="editMenu(edit)">
+        <div class="form-group">
+            <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
+                [(ngModel)]="selectedMenu.name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
+                [(ngModel)]="selectedMenu.category">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" ngModel id="branch" name="branch" #branch="ngModel"
+                [(ngModel)]="selectedMenu.branch.id">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>

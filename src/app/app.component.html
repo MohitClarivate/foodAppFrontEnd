@@ -13,8 +13,15 @@
       <li class="nav-item active">
         <a routerLink="adduser" class="nav-link" href="#">Register </a>
       </li>
-      <li class="nav-item active" *ngIf="isLoggedIn">
-        <a routerLink="branchlist" class="nav-link" href="#">Branch </a>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Branch
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a routerLink="branchlist" class="dropdown-item" href="#">Branch List</a>
+          <a routerLink="branchmanagerlist" class="dropdown-item" href="#">Branch manager List</a>
+        </div>
       </li>
       <li class="nav-item active">
         <a routerLink="menu" class="nav-link" href="#">Menu </a>

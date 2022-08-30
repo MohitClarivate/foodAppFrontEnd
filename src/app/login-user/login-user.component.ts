@@ -13,6 +13,7 @@ export class LoginUserComponent implements OnInit {
   role: any;
   branch: any;
   data: any;
+
   ngOnInit(): void {}
 
   loginUser(form: NgForm) {

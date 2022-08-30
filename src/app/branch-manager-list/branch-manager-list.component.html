@@ -1,0 +1,39 @@
+<div class="container" *ngIf="isLoggedIn">
+    <p>All Branch Managers List </p>
+    <form class="form-inline my-2 my-lg-0" #BMlist="ngForm" (ngSubmit)="managerlist(BMlist)">
+        <input class="form-control mr-sm-2" type="text" ngModel id="id" name="id" #id="ngModel"
+            placeholder="Enter branch id" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form><br>
+    <div>
+        <button (click)="addBM()">Add Branch Manager</button>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Branch Name</th>
+                    <th scope="col">Branch City</th>
+                    <th scope="col">Branch Id</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of allbM | managerList:value">
+                    <td>{{r.id}}</td>
+                    <td>{{r.name}}</td>
+                    <td>{{r.email}}</td>
+                    <td>{{r.branch.name}}</td>
+                    <td>{{r.branch.city}}</td>
+                    <td>{{r.branch.id}}</td>
+                    <td><button class="btn btn-primary" type="button" [routerLink]="['/edituser',r.id]">Update</button>
+                    </td>
+                    <td><button class="btn btn-secondary" type="button" (click)="deleteBM(r.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

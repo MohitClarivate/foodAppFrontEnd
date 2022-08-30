@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginUserComponent } from '../login-user/login-user.component';
+import { NgForm } from '@angular/forms';
 import { BranchService } from '../Services/branch.service';
 import { UserService } from '../Services/user.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-branch-list',
@@ -11,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./branch-list.component.css'],
 })
 export class BranchListComponent implements OnInit {
-  allbM: any;
+  allbranch: any;
   value: any;
   errorMsg: any;
 
@@ -24,22 +23,37 @@ export class BranchListComponent implements OnInit {
   isLoggedIn = this.user.isLoggedIn();
 
   ngOnInit(): void {
-    if (this.user.getRole() == 'admin') {
-      this.branchlist.getAllBM().subscribe((data) => {
-        this.allbM = data;
-        console.log(data);
-      });
-    } else if (this.user.getRole() == 'bm') {
-      window.alert('not authorized');
-      this.router.navigate(['menu']);
-    } else if (this.user.getRole() == 'staff') {
-      window.alert('not authorized');
-      this.router.navigate(['orders']);
+    if ((this.isLoggedIn = true)) {
+      if (this.user.getRole() == 'admin') {
+        this.branchlist.getBranchList().subscribe((data) => {
+          this.allbranch = data;
+          console.log(data);
+        });
+      } else if (this.user.getRole() == 'bm') {
+        window.alert('not authorized');
+        this.router.navigate(['menu']);
+      } else if (this.user.getRole() == 'staff') {
+        window.alert('not authorized');
+        this.router.navigate(['orders']);
+      }
     }
   }
 
-  managerlist(form: NgForm) {
+  //add branch button
+  addBranch() {
+    this.router.navigate(['addbranch']);
+  }
+
+  branchList(form: NgForm) {
     this.value = form.value.id;
-    //console.log(this.value);
+  }
+
+  //delete branch by id
+  deleteBranch(id: any) {
+    this.branchlist.deleteBranch(id).subscribe((res) => {
+      console.log(res);
+      window.alert('Branch deleted sucessfully');
+      //
+    });
   }
 }

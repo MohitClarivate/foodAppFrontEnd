@@ -8,9 +8,18 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { BranchListComponent } from './branch-list/branch-list.component';
+import { BranchManagerListComponent } from './branch-manager-list/branch-manager-list.component';
 import { MenuComponent } from './menu/menu.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ManagerListPipe } from './Pipes/manager-list.pipe';
+import { AddBranchComponent } from './add-branch/add-branch.component';
+import { EditBranchComponent } from './edit-branch/edit-branch.component';
+import { FoodComponent } from './food/food.component';
+import { MenuPipe } from './Pipes/menu.pipe';
+import { EditMenuComponent } from './edit-menu/edit-menu.component';
+import { EditFoodComponent } from './edit-food/edit-food.component';
+import { AddMenuComponent } from './add-menu/add-menu.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -19,11 +28,25 @@ import { ManagerListPipe } from './Pipes/manager-list.pipe';
     EditUserComponent,
     LoginUserComponent,
     BranchListComponent,
+    BranchManagerListComponent,
     MenuComponent,
     OrdersComponent,
     ManagerListPipe,
+    AddBranchComponent,
+    EditBranchComponent,
+    FoodComponent,
+    MenuPipe,
+    EditMenuComponent,
+    EditFoodComponent,
+    AddMenuComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

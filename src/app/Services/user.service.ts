@@ -21,6 +21,16 @@ export class UserService {
     );
   }
 
+  //getting the all user data from the server using http GET method
+  getAllUser() {
+    return this.http.get('http://localhost:8080/findalluser');
+  }
+
+  //Updating user by using http method
+  updateUser(id: any, user: any) {
+    return this.http.put(`http://localhost:8080/updateuser/${id}`, user);
+  }
+
   //check email and password
   loginUser(email: any, password: any) {
     let queryParams = new HttpParams();
@@ -55,9 +65,14 @@ export class UserService {
     if (localStorage.getItem('role') != undefined) {
       return true;
     } else {
-      // window.alert('Login First');
-      // this.router.navigate(['loginuser']);
+      window.alert('Login First');
+      this.router.navigate(['loginuser']);
       return false;
     }
+  }
+
+  //Deleting a user using http delete method
+  deleteUser(id: any) {
+    return this.http.delete(`http://localhost:8080/deleteuser/${id}`);
   }
 }

@@ -24,14 +24,18 @@ export class AddUserComponent implements OnInit {
 
   checkadmin = this.user.isAdmin();
 
+  isLoggedIn = this.user.isLoggedIn();
+
   ngOnInit(): void {
-    if (this.user.getRole() == 'staff') {
-      window.alert('you are not authorized');
-      this.router.navigate(['orders']);
+    if (this.isLoggedIn == true) {
+      if (this.user.getRole() == 'staff') {
+        window.alert('you are not authorized');
+        this.router.navigate(['orders']);
+      }
+      this.branchlist.getBranchList().subscribe((data) => {
+        this.result = data;
+      });
     }
-    this.branchlist.getBranchList().subscribe((data) => {
-      this.result = data;
-    });
   }
 
   addUser(form: NgForm) {

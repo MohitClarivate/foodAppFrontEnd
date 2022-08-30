@@ -1,1 +1,64 @@
-<p>menu works!</p>
+<div class="container" *ngIf="isLoggedIn">
+    <p>All Menu List </p>
+    <button (click)="AddMenu()"><a class="dropdown-item">Add Menu NW</a></button>
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Catagory</th>
+                    <th scope="col">Branch Id</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let r of allmenu.t">
+                <tr (click)="displayMenu(r.id)">
+                    <td>{{r.id}}</td>
+                    <td data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                        aria-controls="collapseExample">{{r.name}}</td>
+                    <td>{{r.category}}</td>
+                    <td>{{r.branch.id}}</td>
+                    <td><button class="btn btn-primary" type="button" [routerLink]="['/editmenu',r.id]">Update</button>
+                    </td>
+                    <td><button class="btn btn-secondary" type="button" (click)="deleteMenu(r.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Catagory</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Availability</th>
+                            <th scope="col">Update</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let r of allmenu.t | menu:temp">
+                        <tr *ngFor="let data of r.foods ">
+                            <!-- <div *ngIf="r.id==temp"> -->
+                            <td>{{data.id}}</td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.price}}</td>
+                            <td>{{data.category}}</td>
+                            <td>{{data.description}}</td>
+                            <td>{{data.type}}</td>
+                            <td>{{data.availability}}</td>
+                            <td><button class="btn btn-primary" type="button"
+                                    [routerLink]="['/editfood',data.id]">Update</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
