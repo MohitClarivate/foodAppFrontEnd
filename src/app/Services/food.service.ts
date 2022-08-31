@@ -7,6 +7,11 @@ import { Injectable } from '@angular/core';
 export class FoodService {
   constructor(private http: HttpClient) {}
 
+  //add the user to the server using http POST method
+  addFood(food: any) {
+    return this.http.post('http://localhost:8080/addfood', food);
+  }
+
   //get all Food from the server using http GET method
   getAllFood() {
     return this.http.get('http://localhost:8080/findallfood');

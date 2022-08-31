@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "foodApp"
+  "cli": {
+    "analytics": "c51ae2d5-e82a-4693-b48a-ab8476a7d46f"
+  }
 }

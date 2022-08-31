@@ -1,6 +1,6 @@
 <div class="container" *ngIf="isLoggedIn">
     <p>All Menu List </p>
-    <button (click)="AddMenu()"><a class="dropdown-item">Add Menu NW</a></button>
+    <button (click)="AddMenu()"><a class="dropdown-item">Add Menu</a></button>
     <div>
         <table class="table">
             <thead class="thead-dark">
@@ -40,6 +40,7 @@
                             <th>Type</th>
                             <th>Availability</th>
                             <th scope="col">Update</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody *ngFor="let r of allmenu.t | menu:temp">
@@ -54,6 +55,9 @@
                             <td>{{data.availability}}</td>
                             <td><button class="btn btn-primary" type="button"
                                     [routerLink]="['/editfood',data.id]">Update</button>
+                            </td>
+                            <td><button class="btn btn-secondary" type="button"
+                                    (click)="deleteFood(data.id)">Delete</button>
                             </td>
                         </tr>
                     </tbody>

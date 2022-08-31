@@ -62,7 +62,11 @@ export class MenuComponent implements OnInit {
     this.menu.deleteMenu(id).subscribe((res) => {
       console.log(res);
       window.alert('Menu deleted sucessfully');
-      //
+      //this.ngOnInit();
+      this.menu.getAllMenu().subscribe((data) => {
+        this.allmenu = data;
+        console.log(data);
+      });
     });
   }
 
