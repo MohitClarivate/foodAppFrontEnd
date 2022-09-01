@@ -1,34 +1,42 @@
 <div class="container">
-    <p>edit Food!</p>
-    <form #edit="ngForm" (ngSubmit)="editFood(edit)">
+    <h3>add food!</h3>
+    <form #add="ngForm" (ngSubmit)="addFood(add)">
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                [(ngModel)]="selectedFood.name">
+                placeholder="Enter name">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="img" name="img" #img="ngModel"
-                [(ngModel)]="selectedFood.img">
+                placeholder="Enter image">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
-                [(ngModel)]="selectedFood.category">
+                placeholder="Enter category">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="type" name="type" #type="ngModel"
-                [(ngModel)]="selectedFood.type">
+                placeholder="Enter type">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="description" name="description" #description="ngModel"
-                [(ngModel)]="selectedFood.description">
+                placeholder="Enter description">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="price" name="price" #price="ngModel"
-                [(ngModel)]="selectedFood.price">
+                placeholder="Enter price">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="availability" name="availability"
-                #availability="ngModel" [(ngModel)]="selectedFood.availability">
+                #availability="ngModel" placeholder="Enter availability">
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <div class="form-group" *ngIf="checkadmin">
+            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel">
+                <option disabled selected value>Select Branch</option>
+                <option *ngFor="let r of result.t" value={{r.id}}>{{r.id}}. {{r.name}}, {{r.city}}</option>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

@@ -13,6 +13,9 @@ import { FoodComponent } from './food/food.component';
 import { EditMenuComponent } from './edit-menu/edit-menu.component';
 import { EditFoodComponent } from './edit-food/edit-food.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
+import { AddFoodComponent } from './add-food/add-food.component';
+import { AddOrderComponent } from './add-order/add-order.component';
+import { EditOrderComponent } from './edit-order/edit-order.component';
 
 const routes: Routes = [
   {
@@ -56,6 +59,10 @@ const routes: Routes = [
     component: EditMenuComponent,
   },
   {
+    path: 'addfood',
+    component: AddFoodComponent,
+  },
+  {
     path: 'food',
     component: FoodComponent,
   },
@@ -66,6 +73,14 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent,
+  },
+  {
+    path: 'addorder',
+    component: AddOrderComponent,
+  },
+  {
+    path: 'editorder/:id',
+    component: EditOrderComponent,
   },
 ];
 

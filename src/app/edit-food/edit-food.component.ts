@@ -47,20 +47,11 @@ export class EditFoodComponent implements OnInit {
   }
 
   editFood(form: NgForm) {
-    if (this.user.getRole() == 'bm') {
-      form.value.role = 'staff';
-      this.branch.id = this.user.getBranch();
-      form.value.branch = this.branch;
-    } else {
-      this.branch.id = form.value.branch;
-      form.value.branch = this.branch;
-    }
-
     console.log(form.value);
     this.food.updateFood(this.selectedFood.id, form.value).subscribe((res) => {
       console.log(res);
     });
     window.alert('Food Updated sucessfully');
-    this.router.navigate(['menu']);
+    this.router.navigate(['food']);
   }
 }

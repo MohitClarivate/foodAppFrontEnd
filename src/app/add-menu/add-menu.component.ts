@@ -22,36 +22,23 @@ export class AddMenuComponent implements OnInit {
   ) {}
 
   allfood: any = [];
-  index: any;
 
   isLoggedIn = this.user.isLoggedIn();
 
   dropdownList: any = [];
   selectedItems = [];
   dropdownSettings = {};
-  temp: any = [];
 
   ngOnInit(): void {
     this.food.getAllFood().subscribe((data) => {
       this.allfood = data;
-      //console.log(data);
-      //console.log(this.allfood.t);
       this.dropdownList = this.allfood.t;
-      //console.log(this.dropdownList);
     });
     this.dropdownSettings = {
       idField: 'id',
       textField: 'name',
     };
-    this.selectedItems = [];
-    //console.log(this.selectedItems);
 
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'name',
-      unSelectAllText: 'UnSelect All',
-    };
     if ((this.isLoggedIn = true)) {
       if (this.user.getRole() == 'admin') {
       } else if (this.user.getRole() == 'bm') {
@@ -64,38 +51,11 @@ export class AddMenuComponent implements OnInit {
     }
   }
 
-  onItemDeSelect(item: any) {
-    this.temp.pop(item);
-    // for (let i of this.temp) {
-    //   if (i.id == item.id) {
-    //     this.temp.splice(i.id - 1, 1);
-    //   }
-    // }
-    // const index = this.temp.indexOf(item);
-    // console.log(index);
-    // if (index !== -1) {
-    //   this.temp.splice(index, 1);
-    // }
-    //this.temp.pop(item);
-    // this.index = this.temp.indexOf(item);
-    // this.temp.splice(this.index, 1);
-    // console.log(this.index);
-  }
-
-  onItemSelect(item: any) {
-    this.temp.push(item);
-    console.log(item);
-  }
-
   branch = {
     id: '',
   };
 
   addMenu(form: NgForm) {
-    //console.log(this.selectedItems);
-    console.log(this.temp);
-    form.value.foods = this.temp;
-
     if (this.user.getRole() == 'admin') {
       this.branch.id = form.value.branch;
       form.value.branch = this.branch;
@@ -103,7 +63,6 @@ export class AddMenuComponent implements OnInit {
       this.branch.id = this.user.getBranch();
       form.value.branch = this.branch;
     }
-    //console.log(form.value);
     this.menu.addMenu(form.value).subscribe(
       (res) => {
         //console.log(res);

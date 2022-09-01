@@ -10,11 +10,10 @@
                 placeholder="Enter category">
         </div>
         <div>
-            <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [settings]="dropdownSettings"
-                [data]="dropdownList" [(ngModel)]="selectedItems" (onDeSelect)="onItemDeSelect($event)"
-                (onSelect)="onItemSelect($event)">
+            <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel"
+                [placeholder]="'custom placeholder'" [settings]="dropdownSettings" [data]="dropdownList"
+                [(ngModel)]="selectedItems">
             </ng-multiselect-dropdown>
-            text{{selectedItems}}
         </div><br>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="branch" name="branch" #branch="ngModel"
