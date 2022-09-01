@@ -1,0 +1,19 @@
+.layout{
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 150px;
+
+    background-color: #F5F5F5;
+}
+
+.outer{
+    padding: 50px;
+    text-align: center;
+    font-size: 36px;
+}
+
+.inner{
+    
+    font-size: 25px;
+}
+

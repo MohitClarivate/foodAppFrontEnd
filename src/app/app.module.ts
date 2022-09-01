@@ -23,6 +23,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AddOrderComponent } from './add-order/add-order.component';
 import { AddFoodComponent } from './add-food/add-food.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
+import { HomeComponentComponent } from './home-component/home-component.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EditOrderComponent } from './edit-order/edit-order.component';
     AddOrderComponent,
     AddFoodComponent,
     EditOrderComponent,
+    HomeComponentComponent,
   ],
   imports: [
     BrowserModule,

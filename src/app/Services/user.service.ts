@@ -65,8 +65,6 @@ export class UserService {
     if (localStorage.getItem('role') != undefined) {
       return true;
     } else {
-      window.alert('Login First');
-      this.router.navigate(['loginuser']);
       return false;
     }
   }
