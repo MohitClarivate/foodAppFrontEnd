@@ -31,19 +31,14 @@ export class MenuComponent implements OnInit {
   isLoggedIn = this.user.isLoggedIn();
 
   ngOnInit(): void {
-    if ((this.isLoggedIn = true)) {
-      if (this.user.getRole() == 'admin') {
-        this.menu.getAllMenu().subscribe((data) => {
-          this.allmenu = data;
-          console.log(data);
-        });
-      } else if (this.user.getRole() == 'bm') {
-        window.alert('not authorized');
-        this.router.navigate(['menu']);
-      } else if (this.user.getRole() == 'staff') {
-        window.alert('not authorized');
-        this.router.navigate(['orders']);
-      }
+    if (this.user.getRole() == 'admin' || this.user.getRole() == 'bm') {
+      this.menu.getAllMenu().subscribe((data) => {
+        this.allmenu = data;
+        console.log(data);
+      });
+    } else if (this.user.getRole() == 'staff') {
+      window.alert('Only for admin and Branch Managers!');
+      this.router.navigate(['orders']);
     }
   }
 

@@ -1,0 +1,21 @@
+.container{
+    align-content: center;
+    background-color: #F5F5F5;
+    margin-top: 30px;
+    padding: 20px;
+    width: 500px;
+    height: 600px;
+}
+table, th, td {
+    border: 0px solid;
+}
+.head{
+    text-align: center;
+}
+.right{
+    float:right;
+}
+
+.left{
+    float:left;
+}

@@ -1,0 +1,42 @@
+<div class="container border">
+    <div class="head">
+        <h4>Food-App Invoice!</h4>
+        <p>{{selectedOrder.branch.name}},{{selectedOrder.branch.city}}<br>
+            {{selectedOrder.branch.phone}}</p>
+        <h5>Order #{{selectedOrder.id}}</h5>
+    </div>
+
+    <p style="text-align: left; width:49%; display: inline-block;">{{selectedOrder.name}},<br>
+        {{selectedOrder.phone}}</p>
+    <p style="text-align: right; width:50%;  display: inline-block;">Date: <br>
+        Time:</p>
+
+    <table class="table table-sm">
+        <thead class="thead">
+            <tr>
+                <th scope="col">S.No.</th>
+                <th scope="col">Foods</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of selectedOrder.foods; let i=index;">
+                <th>{{i+1}}</th>
+                <td>{{r.name}}</td>
+                <td>{{r.price}}</td>
+            </tr><br>
+            <tr>
+                <th rowspan="2">Total Amount: </th>
+            </tr>
+            <tr>
+                <td>
+            <tr>Gross Amount: {{selectedOrder.price}}</tr>
+            <tr>GST @12%: {{gst}}</tr>
+            <tr>Service Charge @5%: {{servicecharge}}</tr>
+            <tr>Net Payable Amount: {{netamount}}</tr>
+            </td>
+            </tr>
+            <br><button onclick="window.print()" type="submit" class="btn btn-primary">Print Bill</button>
+        </tbody>
+    </table>
+</div>

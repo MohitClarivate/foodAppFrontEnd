@@ -1,0 +1,32 @@
+<div class="container">
+    <p>All Branch Managers List </p>
+    <div>
+        <button [routerLink]="['/adduser']">Add Staff</button>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Branch Id</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of allstaff ">
+                    <td>{{r.id}}</td>
+                    <td>{{r.name}}</td>
+                    <td>{{r.email}}</td>
+                    <td>{{r.role}}</td>
+                    <td>{{r.branch.id}}</td>
+                    <td><button class="btn btn-primary" type="button" [routerLink]="['/edituser',r.id]">Update</button>
+                    </td>
+                    <td><button class="btn btn-secondary" type="button" (click)="deleteStaff(r.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

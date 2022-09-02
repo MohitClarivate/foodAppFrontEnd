@@ -15,6 +15,7 @@
                     <th scope="col">Branch</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Bill</th>
                 </tr>
             </thead>
             <tbody *ngFor="let r of allorder">
@@ -31,6 +32,8 @@
                     <td><button class="btn btn-primary" type="button" [routerLink]="['/editorder',r.id]">Update</button>
                     </td>
                     <td><button class="btn btn-secondary" type="button" (click)="deleteOrder(r.id)">Delete</button>
+                    </td>
+                    <td><button class="btn btn-secondary" type="button" [routerLink]="['/bill',r.id]">Bill</button>
                     </td>
                 </tr>
             </tbody>

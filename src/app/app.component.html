@@ -8,19 +8,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a routerLink="loginuser" class="nav-link" href="#">Login </a>
-      </li>
-      <li class="nav-item active">
         <a routerLink="adduser" class="nav-link" href="#">Register </a>
       </li>
-      <li class="nav-item active dropdown">
+      <li *ngIf="!isstaff()" class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          Branch
+          List
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a routerLink="branchlist" class="dropdown-item" href="#">Branch List</a>
-          <a routerLink="branchmanagerlist" class="dropdown-item" href="#">Branch manager List</a>
+          <a *ngIf="!isBM()" routerLink="branchlist" class="dropdown-item" href="#">Branch List</a>
+          <a *ngIf="!isBM()" routerLink="branchmanagerlist" class="dropdown-item" href="#">Branch manager List</a>
+          <a routerLink="stafflist" class="dropdown-item">Staff List</a>
         </div>
       </li>
       <li class="nav-item active">
@@ -33,7 +31,8 @@
         <a routerLink="orders" class="nav-link" href="#">Orders </a>
       </li>
     </ul>
-    <button (click)="logOut()">Logout</button>
+    <button *ngIf="isLoggedout()" routerLink="loginuser">Login</button>
+    <button *ngIf="isLoggedin()" (click)="logOut()">Logout</button>
   </div>
 </nav>
 <router-outlet></router-outlet>

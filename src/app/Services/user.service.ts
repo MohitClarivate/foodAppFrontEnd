@@ -26,6 +26,11 @@ export class UserService {
     return this.http.get('http://localhost:8080/findalluser');
   }
 
+  //find all staff
+  getAllStaff() {
+    return this.http.get('http://localhost:8080/findallStaff');
+  }
+
   //Updating user by using http method
   updateUser(id: any, user: any) {
     return this.http.put(`http://localhost:8080/updateuser/${id}`, user);
@@ -62,7 +67,7 @@ export class UserService {
 
   //check login
   isLoggedIn() {
-    if (localStorage.getItem('role') != undefined) {
+    if (localStorage.getItem('name') != undefined) {
       return true;
     } else {
       return false;

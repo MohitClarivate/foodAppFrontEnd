@@ -24,6 +24,8 @@ import { AddOrderComponent } from './add-order/add-order.component';
 import { AddFoodComponent } from './add-food/add-food.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
+import { BillComponent } from './bill/bill.component';
+import { StaffListComponent } from './staff-list/staff-list.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { HomeComponentComponent } from './home-component/home-component.componen
     AddFoodComponent,
     EditOrderComponent,
     HomeComponentComponent,
+    BillComponent,
+    StaffListComponent,
   ],
   imports: [
     BrowserModule,

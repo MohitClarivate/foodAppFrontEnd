@@ -11,6 +11,7 @@ import { UserService } from '../Services/user.service';
 export class LoginUserComponent implements OnInit {
   constructor(private user: UserService, private router: Router) {}
   role: any;
+  name: any;
   branch: any;
   data: any;
 
@@ -22,7 +23,9 @@ export class LoginUserComponent implements OnInit {
         this.data = res;
         if (this.data.status == 200) {
           this.role = this.data.t.role;
+          this.name = this.data.t.name;
           localStorage.setItem('role', this.role);
+          localStorage.setItem('name', this.name);
           if (this.role != 'admin') {
             this.branch = this.data.t.branch.id;
             localStorage.setItem('branch', this.branch);
@@ -30,6 +33,7 @@ export class LoginUserComponent implements OnInit {
         }
         console.log(res);
         if (this.user.getRole() == 'admin') {
+          window.alert('Welcome ' + this.name + ' you are logged in!');
           return this.router.navigate(['branchlist']);
         } else if (this.user.getRole() == 'bm') {
           return this.router.navigate(['menu']);

@@ -24,19 +24,17 @@ export class BranchManagerListComponent implements OnInit {
   isLoggedIn = this.user.isLoggedIn();
 
   ngOnInit(): void {
-    if ((this.isLoggedIn = true)) {
-      if (this.user.getRole() == 'admin') {
-        this.branchlist.getAllBM().subscribe((data) => {
-          this.allbM = data;
-          console.log(data);
-        });
-      } else if (this.user.getRole() == 'bm') {
-        window.alert('not authorized');
-        this.router.navigate(['menu']);
-      } else if (this.user.getRole() == 'staff') {
-        window.alert('not authorized');
-        this.router.navigate(['orders']);
-      }
+    if (this.user.getRole() == 'admin') {
+      this.branchlist.getAllBM().subscribe((data) => {
+        this.allbM = data;
+        console.log(data);
+      });
+    } else if (this.user.getRole() == 'bm') {
+      window.alert('Only for Admin');
+      this.router.navigate(['menu']);
+    } else if (this.user.getRole() == 'staff') {
+      window.alert('Only for Admin');
+      this.router.navigate(['orders']);
     }
   }
 

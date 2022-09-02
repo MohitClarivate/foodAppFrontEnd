@@ -18,6 +18,8 @@ import { AddOrderComponent } from './add-order/add-order.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { LoginGuard } from './Guards/login.guard';
+import { BillComponent } from './bill/bill.component';
+import { StaffListComponent } from './staff-list/staff-list.component';
 
 const routes: Routes = [
   {
@@ -56,6 +58,11 @@ const routes: Routes = [
   {
     path: 'branchmanagerlist',
     component: BranchManagerListComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'stafflist',
+    component: StaffListComponent,
     canActivate: [LoginGuard],
   },
   {
@@ -101,6 +108,11 @@ const routes: Routes = [
   {
     path: 'editorder/:id',
     component: EditOrderComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'bill/:id',
+    component: BillComponent,
     canActivate: [LoginGuard],
   },
 ];

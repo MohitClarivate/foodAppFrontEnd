@@ -27,15 +27,13 @@ export class AddUserComponent implements OnInit {
   isLoggedIn = this.user.isLoggedIn();
 
   ngOnInit(): void {
-    if (this.isLoggedIn == true) {
-      if (this.user.getRole() == 'staff') {
-        window.alert('you are not authorized');
-        this.router.navigate(['orders']);
-      }
-      this.branchlist.getBranchList().subscribe((data) => {
-        this.result = data;
-      });
+    if (this.user.getRole() == 'staff') {
+      window.alert('Only for Admin and Branch Managers');
+      this.router.navigate(['orders']);
     }
+    this.branchlist.getBranchList().subscribe((data) => {
+      this.result = data;
+    });
   }
 
   addUser(form: NgForm) {
@@ -52,6 +50,7 @@ export class AddUserComponent implements OnInit {
       (res) => {
         console.log(res);
         window.alert('User added Succesfully');
+        this.router.navigate(['stafflist']);
       },
       (err) => {
         console.log(err);
