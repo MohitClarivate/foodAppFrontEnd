@@ -1,24 +1,39 @@
 <div class="container">
-    <h3>add-Menu !</h3>
-    <form #add="ngForm" (ngSubmit)="addMenu(add)">
+    <h3>Add Menu!</h3><br>
+    <form #add="ngForm" (ngSubmit)="add.form.valid && addMenu(add)">
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                placeholder="Enter name">
+                placeholder="Enter name" required>
+            <div *ngIf="(add.submitted || name.invalid && name.touched) && name.errors" style="color: red;">
+                <div *ngIf="name.errors['required']"><sup>*</sup>name is required</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
-                placeholder="Enter category">
+                placeholder="Enter category" required>
+            <div *ngIf="(add.submitted || category.invalid && category.touched) && category.errors" style="color: red;">
+                <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
+            </div>
         </div>
-        <div>
-            <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel"
-                [placeholder]="'custom placeholder'" [settings]="dropdownSettings" [data]="dropdownList"
-                [(ngModel)]="selectedItems">
-            </ng-multiselect-dropdown>
-        </div><br>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="branch" name="branch" #branch="ngModel"
-                placeholder="Enter Branch">
+            <div class="dropdown">
+                <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel" [placeholder]="'Select foods'"
+                    [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems" required>
+                </ng-multiselect-dropdown>
+            </div>
+            <div *ngIf="(add.submitted || foods.invalid && foods.touched) && foods.errors" style="color: red;">
+                <div *ngIf="foods.errors['required']"><sup>*</sup>foods is required</div>
+            </div>
         </div>
+        <div class="form-group" *ngIf="checkadmin">
+            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel" required>
+                <option disabled selected value>Select Branch</option>
+                <option *ngFor="let r of result.t" value={{r.id}}>{{r.id}}. {{r.name}}, {{r.city}}</option>
+            </select>
+            <div *ngIf="(add.submitted || branch.invalid && branch.touched) && branch.errors" style="color: red;">
+                <div *ngIf="branch.errors['required']"><sup>*</sup>branch is required</div>
+            </div>
+        </div><br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

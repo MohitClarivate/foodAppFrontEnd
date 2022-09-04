@@ -1,41 +1,63 @@
 <div class="container">
-    <h3>add food!</h3>
-    <form #add="ngForm" (ngSubmit)="addFood(add)">
+    <h3>Add Food!</h3><br>
+    <form #add="ngForm" (ngSubmit)="add.form.valid && addFood(add)">
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                placeholder="Enter name">
+                placeholder="Enter food name" required>
+            <div *ngIf="(add.submitted || name.invalid && name.touched) && name.errors" style="color: red;">
+                <div *ngIf="name.errors['required']"><sup>*</sup>name is required</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="img" name="img" #img="ngModel"
-                placeholder="Enter image">
+                placeholder="Enter food image">
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
-                placeholder="Enter category">
+                placeholder="Enter food category" required>
+            <div *ngIf="(add.submitted || category.invalid && category.touched) && category.errors" style="color: red;">
+                <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="type" name="type" #type="ngModel"
-                placeholder="Enter type">
+                placeholder="Enter food type" required>
+            <div *ngIf="(add.submitted || type.invalid && type.touched) && type.errors" style="color: red;">
+                <div *ngIf="type.errors['required']"><sup>*</sup>type is required</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="description" name="description" #description="ngModel"
-                placeholder="Enter description">
+                placeholder="Enter food description" required>
+            <div *ngIf="(add.submitted || description.invalid && description.touched) && description.errors"
+                style="color: red;">
+                <div *ngIf="description.errors['required']"><sup>*</sup>description is required</div>
+            </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="price" name="price" #price="ngModel"
-                placeholder="Enter price">
+            <input type="number" class="form-control" ngModel id="price" name="price" #price="ngModel"
+                placeholder="Enter food price" required>
+            <div *ngIf="(add.submitted || price.invalid && price.touched) && price.errors" style="color: red;">
+                <div *ngIf="price.errors['required']"><sup>*</sup>price is required</div>
+            </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="availability" name="availability"
-                #availability="ngModel" placeholder="Enter availability">
+            <input type="number" class="form-control" ngModel id="availability" name="availability"
+                #availability="ngModel" placeholder="Enter food availability" required>
+            <div *ngIf="(add.submitted || availability.invalid && availability.touched) && availability.errors"
+                style="color: red;">
+                <div *ngIf="availability.errors['required']"><sup>*</sup>availability is required</div>
+            </div>
         </div>
         <div class="form-group" *ngIf="checkadmin">
-            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel">
+            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel" required>
                 <option disabled selected value>Select Branch</option>
                 <option *ngFor="let r of result.t" value={{r.id}}>{{r.id}}. {{r.name}}, {{r.city}}</option>
             </select>
-        </div>
-
+            <div *ngIf="(add.submitted || branch.invalid && branch.touched) && branch.errors" style="color: red;">
+                <div *ngIf="branch.errors['required']"><sup>*</sup>branch is required</div>
+            </div>
+        </div><br>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

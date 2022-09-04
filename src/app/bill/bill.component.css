@@ -4,7 +4,8 @@
     margin-top: 30px;
     padding: 20px;
     width: 500px;
-    height: 600px;
+    min-height: 300px;
+    max-height: auto;
 }
 table, th, td {
     border: 0px solid;

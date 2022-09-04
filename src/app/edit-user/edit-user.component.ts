@@ -25,15 +25,10 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
     console.log(id);
-    this.user.getAllUser().subscribe((data) => {
+    this.user.getAllUserById(id).subscribe((data) => {
       this.result = data;
-
-      for (let r of this.result.t) {
-        if (r.id == id) {
-          this.selectedUser = r;
-          //console.log(this.selectedUser);
-        }
-      }
+      this.selectedUser = this.result.t;
+      console.log(this.selectedUser);
     });
   }
 
@@ -51,6 +46,6 @@ export class EditUserComponent implements OnInit {
       console.log(res);
     });
     window.alert('Updated sucessfully');
-    this.router.navigate(['branchmanagerlist']);
+    this.router.navigate(['stafflist']);
   }
 }

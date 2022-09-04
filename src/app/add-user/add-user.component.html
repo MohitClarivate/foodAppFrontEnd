@@ -1,31 +1,48 @@
 <div class="container">
-    <h3>add-user works!</h3>
-    <form #adduser="ngForm" (ngSubmit)="addUser(adduser)">
+    <h3>Add user!</h3>
+    <form #adduser="ngForm" (ngSubmit)="adduser.form.valid && addUser(adduser)">
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                placeholder="Enter name">
+                placeholder="Enter name" required>
+            <div *ngIf="(adduser.submitted || name.invalid && name.touched) && name.errors" style="color: red;">
+                <div *ngIf="name.errors['required']"><sup>*</sup>name is required</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="email" class="form-control" ngModel id="email" name="email" #email="ngModel"
-                placeholder="Enter email">
+                placeholder="Enter email" required email>
+            <div *ngIf="(adduser.submitted || email.invalid && email.touched) && email.errors" style="color: red;">
+                <div *ngIf="email.errors['required']"><sup>*</sup>email is required</div>
+                <div *ngIf="email.errors['email']"><sup>*</sup>email is invalid</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="password" class="form-control" ngModel id="password" name="password" #password="ngModel"
-                placeholder="Enter password">
+                placeholder="Enter password" required>
+            <div *ngIf="(adduser.submitted || password.invalid && password.touched) && password.errors"
+                style="color: red;">
+                <div *ngIf="password.errors['required']"><sup>*</sup>password is required</div>
+            </div>
         </div>
         <div class="form-group" *ngIf="checkadmin">
-            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel">
+            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel" required>
                 <option disabled selected value>Select Branch</option>
                 <option *ngFor="let r of result.t" value={{r.id}}>{{r.id}}. {{r.name}}, {{r.city}}</option>
             </select>
+            <div *ngIf="(adduser.submitted || branch.invalid && branch.touched) && branch.errors" style="color: red;">
+                <div *ngIf="branch.errors['required']"><sup>*</sup>branch is required</div>
+            </div>
         </div>
         <div class="form-group" *ngIf="checkadmin">
-            <select class="form-control form-control-sm" ngModel id="role" name="role" #role="ngModel">
+            <select class="form-control form-control-sm" ngModel id="role" name="role" #role="ngModel" required>
                 <option disabled selected value>Select role</option>
                 <option value="admin">Admin</option>
                 <option value="bm">Branch Manager</option>
                 <option value="staff">Staff Member</option>
-            </select><br>
+            </select>
+            <div *ngIf="(adduser.submitted || role.invalid && role.touched) && role.errors" style="color: red;">
+                <div *ngIf="role.errors['required']"><sup>*</sup>role is required</div>
+            </div><br>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

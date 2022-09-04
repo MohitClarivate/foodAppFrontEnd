@@ -1,34 +1,46 @@
 <div class="container">
-    <h3>add-Order !</h3>
-    <form #add="ngForm" (ngSubmit)="addOrder(add)">
+    <h3>New Order!</h3><br>
+    <form #add="ngForm" (ngSubmit)="add.form.valid && addOrder(add)">
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                placeholder="Enter name">
+                placeholder="Enter customer name" required>
+            <div *ngIf="(add.submitted || name.invalid && name.touched) && name.errors" style="color: red;">
+                <div *ngIf="name.errors['required']"><sup>*</sup>name is required</div>
+            </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="phone" name="phone" #phone="ngModel"
-                placeholder="Enter phone">
+            <input type="number" class="form-control" ngModel id="phone" name="phone" #phone="ngModel"
+                placeholder="Enter customer phone" required>
+            <div *ngIf="(add.submitted || phone.invalid && phone.touched) && phone.errors" style="color: red;">
+                <div *ngIf="phone.errors['required']"><sup>*</sup>phone is required</div>
+            </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="item" name="item" #item="ngModel"
-                placeholder="Enter item">
+            <div class="dropdown">
+                <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel" [placeholder]="'Select foods'"
+                    [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems" required>
+                </ng-multiselect-dropdown>
+            </div>
+            <div *ngIf="(add.submitted || foods.invalid && foods.touched) && foods.errors" style="color: red;">
+                <div *ngIf="foods.errors['required']"><sup>*</sup>foods is required</div>
+            </div>
         </div>
-        <div>
-            <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel"
-                [placeholder]="'custom placeholder'" [settings]="dropdownSettings" [data]="dropdownList"
-                [(ngModel)]="selectedItems">
-            </ng-multiselect-dropdown>
-        </div><br>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="status" name="status" #status="ngModel"
-                placeholder="Enter status">
+                placeholder="Enter order status" required>
+            <div *ngIf="(add.submitted || status.invalid && status.touched) && status.errors" style="color: red;">
+                <div *ngIf="status.errors['required']"><sup>*</sup>status is required</div>
+            </div>
         </div>
-        <div class="form-group">
-            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel">
+        <div class="form-group" *ngIf="checkadmin">
+            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel" required>
                 <option disabled selected value>Select Branch</option>
                 <option *ngFor="let r of result.t" value={{r.id}}>{{r.id}}. {{r.name}}, {{r.city}}</option>
             </select>
-        </div>
+            <div *ngIf="(add.submitted || branch.invalid && branch.touched) && branch.errors" style="color: red;">
+                <div *ngIf="branch.errors['required']"><sup>*</sup>branch is required</div>
+            </div>
+        </div><br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

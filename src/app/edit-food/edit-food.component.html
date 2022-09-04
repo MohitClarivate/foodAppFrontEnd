@@ -1,34 +1,66 @@
 <div class="container">
-    <p>edit Food!</p>
-    <form #edit="ngForm" (ngSubmit)="editFood(edit)">
+    <h3>Edit Food!</h3><br>
+    <form #edit="ngForm" (ngSubmit)="edit.form.valid && editFood(edit)">
         <div class="form-group">
+            <label>Update food name</label>
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                [(ngModel)]="selectedFood.name">
+                [(ngModel)]="selectedFood.name" required>
+            <div *ngIf="(edit.submitted || name.invalid && name.touched) && name.errors" style="color: red;">
+                <div *ngIf="name.errors['required']"><sup>*</sup>name is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update food image</label>
             <input type="text" class="form-control" ngModel id="img" name="img" #img="ngModel"
-                [(ngModel)]="selectedFood.img">
+                [(ngModel)]="selectedFood.img" required>
+            <div *ngIf="(edit.submitted || img.invalid && img.touched) && img.errors" style="color: red;">
+                <div *ngIf="img.errors['required']"><sup>*</sup>img is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update food category</label>
             <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
-                [(ngModel)]="selectedFood.category">
+                [(ngModel)]="selectedFood.category" required>
+            <div *ngIf="(edit.submitted || category.invalid && category.touched) && category.errors"
+                style="color: red;">
+                <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update food type</label>
             <input type="text" class="form-control" ngModel id="type" name="type" #type="ngModel"
-                [(ngModel)]="selectedFood.type">
+                [(ngModel)]="selectedFood.type" required>
+            <div *ngIf="(edit.submitted || type.invalid && type.touched) && type.errors" style="color: red;">
+                <div *ngIf="type.errors['required']"><sup>*</sup>type is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update food description</label>
             <input type="text" class="form-control" ngModel id="description" name="description" #description="ngModel"
-                [(ngModel)]="selectedFood.description">
+                [(ngModel)]="selectedFood.description" required>
+            <div *ngIf="(edit.submitted || description.invalid && description.touched) && description.errors"
+                style="color: red;">
+                <div *ngIf="description.errors['required']"><sup>*</sup>description is required</div>
+            </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="price" name="price" #price="ngModel"
-                [(ngModel)]="selectedFood.price">
+            <label>Update food price</label>
+            <input type="number" class="form-control" ngModel id="price" name="price" #price="ngModel"
+                [(ngModel)]="selectedFood.price" required>
+            <div *ngIf="(edit.submitted || price.invalid && price.touched) && price.errors" style="color: red;">
+                <div *ngIf="price.errors['required']"><sup>*</sup>price is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update food availability</label>
             <input type="text" class="form-control" ngModel id="availability" name="availability"
-                #availability="ngModel" [(ngModel)]="selectedFood.availability">
+                #availability="ngModel" [(ngModel)]="selectedFood.availability" required>
+            <div *ngIf="(edit.submitted || availability.invalid && availability.touched) && availability.errors"
+                style="color: red;">
+                <div *ngIf="availability.errors['required']"><sup>*</sup>availability is required</div>
+            </div>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>

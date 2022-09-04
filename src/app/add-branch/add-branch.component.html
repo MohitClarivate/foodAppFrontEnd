@@ -1,22 +1,36 @@
 <div class="container">
-    <h3>add-branch !</h3>
-    <form #addbranch="ngForm" (ngSubmit)="addBranch(addbranch)">
+    <h3>Add branch !</h3><br>
+    <form #addbranch="ngForm" (ngSubmit)="addbranch.form.valid && addBranch(addbranch)">
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                placeholder="Enter name">
+                placeholder="Enter branch name" required>
+            <div *ngIf="(addbranch.submitted || name.invalid && name.touched) && name.errors" style="color: red;">
+                <div *ngIf="name.errors['required']"><sup>*</sup>name is required</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="email" class="form-control" ngModel id="email" name="email" #email="ngModel"
-                placeholder="Enter email">
+                placeholder="Enter branch email" required email>
+            <div *ngIf="(addbranch.submitted || email.invalid && email.touched) && email.errors" style="color: red;">
+                <div *ngIf="email.errors['required']"><sup>*</sup>email is required</div>
+                <div *ngIf="email.errors['email']"><sup>*</sup>email is invalid</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="city" name="city" #city="ngModel"
-                placeholder="Enter city">
+                placeholder="Enter branch city" required>
+            <div *ngIf="(addbranch.submitted || city.invalid && city.touched) && city.errors" style="color: red;">
+                <div *ngIf="city.errors['required']"><sup>*</sup>city is required</div>
+            </div>
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" ngModel id="number" name="number" #number="ngModel"
-                placeholder="Enter number">
-        </div>
+            <input type="number" class="form-control" ngModel id="phone" name="phone" #phone="ngModel"
+                placeholder="Enter branch phone number" required number>
+            <div *ngIf="(addbranch.submitted || phone.invalid && phone.touched) && phone.errors" style="color: red;">
+                <div *ngIf="phone.errors['required']"><sup>*</sup>phone is required</div>
+                <div *ngIf="phone.errors['phone']"><sup>*</sup>phone number is invalid</div>
+            </div>
+        </div><br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

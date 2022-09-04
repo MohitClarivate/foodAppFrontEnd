@@ -23,6 +23,9 @@ export class StaffListComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.user.getRole() == 'admin' || this.user.getRole() == 'bm') {
+      this.value = localStorage.getItem('branch');
+      console.log(this.value);
+
       this.user.getAllStaff().subscribe((data) => {
         this.allstaff = data;
         console.log(data);

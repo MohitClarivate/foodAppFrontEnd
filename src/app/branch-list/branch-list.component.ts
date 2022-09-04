@@ -51,7 +51,9 @@ export class BranchListComponent implements OnInit {
     this.branchlist.deleteBranch(id).subscribe((res) => {
       console.log(res);
       window.alert('Branch deleted sucessfully');
-      //
+      this.branchlist.getBranchList().subscribe((data) => {
+        this.allbranch = data;
+      });
     });
   }
 }

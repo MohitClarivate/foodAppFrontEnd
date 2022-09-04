@@ -26,6 +26,7 @@ import { EditOrderComponent } from './edit-order/edit-order.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { BillComponent } from './bill/bill.component';
 import { StaffListComponent } from './staff-list/staff-list.component';
+import { StaffListPipe } from './Pipes/staff-list.pipe';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { StaffListComponent } from './staff-list/staff-list.component';
     HomeComponentComponent,
     BillComponent,
     StaffListComponent,
+    StaffListPipe,
   ],
   imports: [
     BrowserModule,

@@ -38,7 +38,7 @@ export class AddBranchComponent implements OnInit {
         (res) => {
           console.log(res);
           window.alert('Branch added Succesfully');
-          this.router.navigate(['branchmanagerlist']);
+          this.router.navigate(['branchlist']);
         },
         (err) => {
           console.log(err);

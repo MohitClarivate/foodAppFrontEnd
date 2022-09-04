@@ -26,6 +26,11 @@ export class UserService {
     return this.http.get('http://localhost:8080/findalluser');
   }
 
+  //getting the all by id
+  getAllUserById(id: any) {
+    return this.http.get(`http://localhost:8080/getuserbyid/${id}`);
+  }
+
   //find all staff
   getAllStaff() {
     return this.http.get('http://localhost:8080/findallStaff');
@@ -59,6 +64,24 @@ export class UserService {
   //check for admin
   isAdmin() {
     if (this.getRole() == 'admin') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //check for admin
+  isBm() {
+    if (this.getRole() == 'bm') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //check for admin
+  isStaff() {
+    if (this.getRole() == 'staff') {
       return true;
     } else {
       return false;

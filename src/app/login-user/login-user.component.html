@@ -1,13 +1,21 @@
 <div class="container border">
     <h3>Login!</h3><br>
-    <form #logData="ngForm" (ngSubmit)="loginUser(logData)">
+    <form #logData="ngForm" (ngSubmit)="logData.form.valid && loginUser(logData)">
         <div class="form-group">
             <input type="text" class="form-control" ngModel id="email" name="email" #email="ngModel"
-                placeholder="Enter email">
+                placeholder="Enter email" required email>
+            <div *ngIf="(logData.submitted || email.invalid && email.touched) && email.errors" style="color: red;">
+                <div *ngIf="email.errors['required']"><sup>*</sup>email is required</div>
+                <div *ngIf="email.errors['email']"><sup>*</sup>email is invalid</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="password" class="form-control" ngModel id="password" name="password" #password="ngModel"
-                placeholder="Enter password">
+                placeholder="Enter password" required>
+            <div *ngIf="(logData.submitted || password.invalid && password.touched) && password.errors"
+                style="color: red;">
+                <div *ngIf="password.errors['required']"><sup>*</sup>Password is required</div>
+            </div>
         </div><br>
 
         <button type="submit" class="btn btn-primary">Login</button>

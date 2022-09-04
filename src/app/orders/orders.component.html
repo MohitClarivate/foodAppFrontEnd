@@ -8,10 +8,10 @@
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Item</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Date & Time</th>
                     <th scope="col">Branch</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
@@ -24,10 +24,10 @@
                     <td data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
                         aria-controls="collapseExample">{{r.name}}</td>
                     <td>{{r.phone}}</td>
-                    <td>{{r.item}}</td>
                     <td>{{r.quantity}}</td>
                     <td>{{r.price}}</td>
                     <td>{{r.status}}</td>
+                    <td>{{r.date}} <br> {{r.time}}</td>
                     <td>{{r.branch.id}}</td>
                     <td><button class="btn btn-primary" type="button" [routerLink]="['/editorder',r.id]">Update</button>
                     </td>

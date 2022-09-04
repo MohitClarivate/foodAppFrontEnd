@@ -28,6 +28,8 @@ export class AddOrderComponent implements OnInit {
   index: any;
   result: any;
 
+  checkadmin = this.user.isAdmin();
+
   isLoggedIn = this.user.isLoggedIn();
 
   dropdownList: any = [];
@@ -35,46 +37,24 @@ export class AddOrderComponent implements OnInit {
   dropdownSettings = {};
 
   ngOnInit(): void {
-    if ((this.isLoggedIn = true)) {
-      this.branchlist.getBranchList().subscribe((data) => {
-        this.result = data;
-      });
-      this.food.getAllFood().subscribe((data) => {
-        this.allfood = data;
-        //console.log(data);
-        //console.log(this.allfood.t);
-        this.dropdownList = this.allfood.t;
-        //console.log(this.dropdownList);
-      });
-      this.dropdownSettings = {
-        idField: 'id',
-        textField: 'name',
-      };
-      //this.selectedItems = [];
-      //console.log(this.selectedItems);
-    }
+    this.branchlist.getBranchList().subscribe((data) => {
+      this.result = data;
+    });
+    this.food.getAllFood().subscribe((data) => {
+      this.allfood = data;
+      this.dropdownList = this.allfood.t;
+    });
+    this.dropdownSettings = {
+      idField: 'id',
+      textField: 'name',
+    };
   }
-
-  // onItemDeSelect(item: any) {
-  //   var index = this.temp.findIndex((obj: { id: any }) => obj.id == item.id);
-  //   this.temp.splice(index, 1);
-  //   console.log(this.temp);
-  // }
-
-  // onItemSelect(item: any) {
-  //   this.temp.push(item);
-  //   //console.log(item);
-  // }
 
   branch = {
     id: '',
   };
 
   addOrder(form: NgForm) {
-    //console.log(this.selectedItems);
-    // console.log(this.temp);
-    // form.value.foods = this.temp;
-
     if (this.user.getRole() == 'admin') {
       this.branch.id = form.value.branch;
       form.value.branch = this.branch;

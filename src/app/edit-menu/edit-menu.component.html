@@ -1,24 +1,43 @@
 <div class="container">
-    <p>edit Menu!</p>
-    <form #edit="ngForm" (ngSubmit)="editMenu(edit)">
+    <h3>Edit Menu!</h3><br>
+    <form #edit="ngForm" (ngSubmit)="edit.form.valid && editMenu(edit)">
         <div class="form-group">
+            <label>Update menu name</label>
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                [(ngModel)]="selectedMenu.name">
+                [(ngModel)]="selectedMenu.name" required>
+            <div *ngIf="(edit.submitted || name.invalid && name.touched) && name.errors" style="color: red;">
+                <div *ngIf="name.errors['required']"><sup>*</sup>name is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update menu category</label>
             <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
-                [(ngModel)]="selectedMenu.category">
+                [(ngModel)]="selectedMenu.category" required>
+            <div *ngIf="(edit.submitted || category.invalid && category.touched) && category.errors"
+                style="color: red;">
+                <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
+            </div>
         </div>
-        <div>
-            <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel"
-                [placeholder]="'custom placeholder'" [settings]="dropdownSettings" [data]="dropdownList"
-                [(ngModel)]="selectedItems">
-            </ng-multiselect-dropdown>
-        </div><br>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="branch" name="branch" #branch="ngModel"
-                [(ngModel)]="selectedMenu.branch.id">
+            <label>Update menu foods</label>
+            <div class="dropdown">
+                <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel"
+                    [placeholder]="'Update menu foods'" [settings]="dropdownSettings" [data]="dropdownList"
+                    [(ngModel)]="selectedItems" required>
+                </ng-multiselect-dropdown>
+            </div>
+            <div *ngIf="(edit.submitted || foods.invalid && foods.touched) && foods.errors" style="color: red;">
+                <div *ngIf="foods.errors['required']"><sup>*</sup>foods is required</div>
+            </div>
         </div>
+        <div class="form-group">
+            <label>Update menu branch</label>
+            <input type="text" class="form-control" ngModel id="branch" name="branch" #branch="ngModel"
+                [(ngModel)]="selectedMenu.branch.id" required>
+            <div *ngIf="(edit.submitted || branch.invalid && branch.touched) && branch.errors" style="color: red;">
+                <div *ngIf="branch.errors['required']"><sup>*</sup>branch is required</div>
+            </div>
+        </div><br>
 
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

@@ -18,10 +18,12 @@ export class AddMenuComponent implements OnInit {
     private user: UserService,
     private router: Router,
     private menu: MenuService,
-    private food: FoodService
+    private food: FoodService,
+    private branchlist: BranchService
   ) {}
 
   allfood: any = [];
+  result: any;
 
   isLoggedIn = this.user.isLoggedIn();
 
@@ -30,24 +32,22 @@ export class AddMenuComponent implements OnInit {
   dropdownSettings = {};
 
   ngOnInit(): void {
-    this.food.getAllFood().subscribe((data) => {
-      this.allfood = data;
-      this.dropdownList = this.allfood.t;
-    });
-    this.dropdownSettings = {
-      idField: 'id',
-      textField: 'name',
-    };
+    if (this.user.getRole() == 'staff') {
+      window.alert('Only for Admin and Branch Managers');
+      this.router.navigate(['orders']);
+    } else {
+      this.branchlist.getBranchList().subscribe((data) => {
+        this.result = data;
+      });
 
-    if ((this.isLoggedIn = true)) {
-      if (this.user.getRole() == 'admin') {
-      } else if (this.user.getRole() == 'bm') {
-        window.alert('not authorized');
-        this.router.navigate(['menu']);
-      } else if (this.user.getRole() == 'staff') {
-        window.alert('not authorized');
-        this.router.navigate(['orders']);
-      }
+      this.food.getAllFood().subscribe((data) => {
+        this.allfood = data;
+        this.dropdownList = this.allfood.t;
+      });
+      this.dropdownSettings = {
+        idField: 'id',
+        textField: 'name',
+      };
     }
   }
 
@@ -55,9 +55,14 @@ export class AddMenuComponent implements OnInit {
     id: '',
   };
 
+  checkadmin = this.user.isAdmin();
+
   addMenu(form: NgForm) {
     if (this.user.getRole() == 'admin') {
       this.branch.id = form.value.branch;
+      form.value.branch = this.branch;
+    } else if (this.user.getRole() == 'bm') {
+      this.branch.id = this.user.getBranch();
       form.value.branch = this.branch;
     } else {
       this.branch.id = this.user.getBranch();

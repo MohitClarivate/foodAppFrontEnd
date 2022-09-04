@@ -1,0 +1,9 @@
+.container{
+    align-content: center;
+    background-color: #F5F5F5;
+    margin-top: 50px;
+    padding: 50px;
+    width: 700px;
+    min-height: 300px;
+    max-height: auto;
+}

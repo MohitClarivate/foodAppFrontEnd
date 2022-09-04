@@ -1,25 +1,44 @@
 <div class="container">
-    <p>edit User!</p>
-    <form #edit="ngForm" (ngSubmit)="editUser(edit)">
+    <h3>Edit User!</h3><br>
+    <form #edit="ngForm" (ngSubmit)="edit.form.valid && editUser(edit)">
         <div class="form-group">
+            <label>Update user name</label>
             <input type="text" class="form-control" ngModel id="name" name="name" #name="ngModel"
-                [(ngModel)]="selectedUser.name">
+                [(ngModel)]="selectedUser.name" required>
+            <div *ngIf="(edit.submitted || name.invalid && name.touched) && name.errors" style="color: red;">
+                <div *ngIf="name.errors['required']"><sup>*</sup>name is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update user email</label>
             <input type="text" class="form-control" ngModel id="email" name="email" #email="ngModel"
-                [(ngModel)]="selectedUser.email">
+                [(ngModel)]="selectedUser.email" required email>
+            <div *ngIf="(edit.submitted || email.invalid && email.touched) && email.errors" style="color: red;">
+                <div *ngIf="email.errors['required']"><sup>*</sup>email is required</div>
+                <div *ngIf="email.errors['email']"><sup>*</sup>email is invalid</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update user password</label>
             <input type="text" class="form-control" ngModel id="password" name="password" #password="ngModel"
-                [(ngModel)]="selectedUser.password">
+                [(ngModel)]="selectedUser.password" required>
+            <div *ngIf="(edit.submitted || password.invalid && password.touched) && password.errors"
+                style="color: red;">
+                <div *ngIf="password.errors['required']"><sup>*</sup>password is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update user role</label>
             <input type="text" class="form-control" ngModel id="role" name="role" #role="ngModel"
-                [(ngModel)]="selectedUser.role">
+                [(ngModel)]="selectedUser.role" required>
+            <div *ngIf="(edit.submitted || role.invalid && role.touched) && role.errors" style="color: red;">
+                <div *ngIf="role.errors['required']"><sup>*</sup>role is required</div>
+            </div>
         </div>
         <div class="form-group">
+            <label>Update user branch</label>
             <input type="text" class="form-control" ngModel id="branch" name="branch" #branch="ngModel"
-                [(ngModel)]="selectedUser.branch.id">
+                [(ngModel)]="selectedUser.branch.id" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>

@@ -30,20 +30,13 @@ export class AddFoodComponent implements OnInit {
   isLoggedIn = this.user.isLoggedIn();
 
   ngOnInit(): void {
-    if (this.isLoggedIn == true) {
-      if (this.user.getRole() == 'staff') {
-        window.alert('you are not authorized');
-        this.router.navigate(['orders']);
-      }
-      this.branchlist.getBranchList().subscribe((data) => {
-        this.result = data;
-      });
-    }
+    this.branchlist.getBranchList().subscribe((data) => {
+      this.result = data;
+    });
   }
 
   addFood(form: NgForm) {
-    if (this.user.getRole() == 'bm') {
-      form.value.role = 'staff';
+    if (this.user.getRole() == 'bm' || this.user.getRole() == 'staff') {
       this.branch.id = this.user.getBranch();
       form.value.branch = this.branch;
     } else {
