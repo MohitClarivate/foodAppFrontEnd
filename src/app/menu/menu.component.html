@@ -1,6 +1,8 @@
-<div class="container" *ngIf="isLoggedIn">
-    <p>All Menu List </p>
-    <button (click)="AddMenu()"><a class="dropdown-item">Add Menu</a></button>
+<div class="container">
+    <div class="row">
+        <h3 class="col-8">All Menu List </h3><br>
+        <button class="col-4 btn btn-secondary align-right" (click)="AddMenu()">Add Menu</button>
+    </div><br>
     <div>
         <table class="table">
             <thead class="thead-dark">
@@ -13,7 +15,7 @@
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let r of allmenu.t">
+            <tbody *ngFor="let r of allmenu.t | staffList:value ">
                 <tr (click)="displayMenu(r.id)">
                     <td>{{r.id}}</td>
                     <td data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"

@@ -1,6 +1,8 @@
-<div class="container" *ngIf="isLoggedIn">
-    <p>All Branch List </p>
-    <button (click)="addBranch()"><a routerLink="addbranch" class="dropdown-item" href="#">Add Branch</a></button>
+<div class="container">
+    <div class="row">
+        <h3 class="col-8">All Branch List</h3><br>
+        <button class="col-4 btn btn-secondary align-right" (click)="addBranch()">Add Branch</button>
+    </div><br>
     <div>
         <table class="table">
             <thead class="thead-dark">

@@ -15,7 +15,12 @@ export class LoginUserComponent implements OnInit {
   branch: any;
   data: any;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('role') != undefined) {
+      window.alert('you are already logged in');
+      this.router.navigate(['orders']);
+    }
+  }
 
   loginUser(form: NgForm) {
     this.user.loginUser(form.value.email, form.value.password).subscribe(
@@ -36,8 +41,10 @@ export class LoginUserComponent implements OnInit {
           window.alert('Welcome ' + this.name + ' you are logged in!');
           return this.router.navigate(['branchlist']);
         } else if (this.user.getRole() == 'bm') {
+          window.alert('Welcome ' + this.name + ' you are logged in!');
           return this.router.navigate(['menu']);
         } else if (this.user.getRole() == 'staff') {
+          window.alert('Welcome ' + this.name + ' you are logged in!');
           return this.router.navigate(['orders']);
         } else {
           return this.router.navigate(['']);

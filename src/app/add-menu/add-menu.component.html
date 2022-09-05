@@ -9,8 +9,11 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
-                placeholder="Enter category" required>
+            <select class="form-control" ngModel id="category" name="category" #category="ngModel" required>
+                <option disabled selected value>Select category</option>
+                <option>Veg</option>
+                <option>Non-Veg</option>
+            </select>
             <div *ngIf="(add.submitted || category.invalid && category.touched) && category.errors" style="color: red;">
                 <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
             </div>
@@ -18,7 +21,7 @@
         <div class="form-group">
             <div class="dropdown">
                 <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel" [placeholder]="'Select foods'"
-                    [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems" required>
+                    [settings]="dropdownSettings" [data]="dropdownList" required>
                 </ng-multiselect-dropdown>
             </div>
             <div *ngIf="(add.submitted || foods.invalid && foods.touched) && foods.errors" style="color: red;">

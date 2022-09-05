@@ -8,7 +8,7 @@ export class ManagerListPipe implements PipeTransform {
     console.log(value);
     console.log(id);
 
-    if (id == undefined || value.length == 0) {
+    if (id == undefined || value.length == 0 || id == '') {
       return value;
     }
     const users = [];

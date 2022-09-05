@@ -13,25 +13,32 @@
             <label>Update food image</label>
             <input type="text" class="form-control" ngModel id="img" name="img" #img="ngModel"
                 [(ngModel)]="selectedFood.img" required>
-            <div *ngIf="(edit.submitted || img.invalid && img.touched) && img.errors" style="color: red;">
-                <div *ngIf="img.errors['required']"><sup>*</sup>img is required</div>
-            </div>
         </div>
-        <div class="form-group">
-            <label>Update food category</label>
-            <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
-                [(ngModel)]="selectedFood.category" required>
-            <div *ngIf="(edit.submitted || category.invalid && category.touched) && category.errors"
-                style="color: red;">
-                <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Update food category</label>
+                <select class="form-control" id="category" required ngModel name="category" #category="ngModel"
+                    [(ngModel)]="selectedFood.category">
+                    <option>Select category</option>
+                    <option>Veg</option>
+                    <option>Non-Veg</option>
+                </select>
+                <div *ngIf="(edit.submitted || category.invalid && category.touched) && category.errors"
+                    style="color: red;">
+                    <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label>Update food type</label>
-            <input type="text" class="form-control" ngModel id="type" name="type" #type="ngModel"
-                [(ngModel)]="selectedFood.type" required>
-            <div *ngIf="(edit.submitted || type.invalid && type.touched) && type.errors" style="color: red;">
-                <div *ngIf="type.errors['required']"><sup>*</sup>type is required</div>
+            <div class="form-group col-6">
+                <label>Update food type</label>
+                <select class="form-control" id="type" required ngModel name="type" #type="ngModel"
+                    [(ngModel)]="selectedFood.type">
+                    <option>Pizza</option>
+                    <option>Burger</option>
+                    <option>Pasta</option>
+                </select>
+                <div *ngIf="(edit.submitted || type.invalid && type.touched) && type.errors" style="color: red;">
+                    <div *ngIf="type.errors['required']"><sup>*</sup>type is required</div>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -43,21 +50,23 @@
                 <div *ngIf="description.errors['required']"><sup>*</sup>description is required</div>
             </div>
         </div>
-        <div class="form-group">
-            <label>Update food price</label>
-            <input type="number" class="form-control" ngModel id="price" name="price" #price="ngModel"
-                [(ngModel)]="selectedFood.price" required>
-            <div *ngIf="(edit.submitted || price.invalid && price.touched) && price.errors" style="color: red;">
-                <div *ngIf="price.errors['required']"><sup>*</sup>price is required</div>
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Update food price</label>
+                <input type="number" class="form-control" ngModel id="price" name="price" #price="ngModel"
+                    [(ngModel)]="selectedFood.price" required>
+                <div *ngIf="(edit.submitted || price.invalid && price.touched) && price.errors" style="color: red;">
+                    <div *ngIf="price.errors['required']"><sup>*</sup>price is required</div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label>Update food availability</label>
-            <input type="text" class="form-control" ngModel id="availability" name="availability"
-                #availability="ngModel" [(ngModel)]="selectedFood.availability" required>
-            <div *ngIf="(edit.submitted || availability.invalid && availability.touched) && availability.errors"
-                style="color: red;">
-                <div *ngIf="availability.errors['required']"><sup>*</sup>availability is required</div>
+            <div class="form-group col-6">
+                <label>Update food availability</label>
+                <input type="text" class="form-control" ngModel id="availability" name="availability"
+                    #availability="ngModel" [(ngModel)]="selectedFood.availability" required>
+                <div *ngIf="(edit.submitted || availability.invalid && availability.touched) && availability.errors"
+                    style="color: red;">
+                    <div *ngIf="availability.errors['required']"><sup>*</sup>availability is required</div>
+                </div>
             </div>
         </div>
         <br>

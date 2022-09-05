@@ -5,6 +5,7 @@ import { FoodService } from '../Services/food.service';
 import { MenuService } from '../Services/menu.service';
 import { OrderService } from '../Services/order.service';
 import { UserService } from '../Services/user.service';
+import { BranchService } from '../Services/branch.service';
 
 @Component({
   selector: 'app-edit-order',
@@ -13,6 +14,7 @@ import { UserService } from '../Services/user.service';
 })
 export class EditOrderComponent implements OnInit {
   result: any;
+  list: any;
   selectedOrder: any;
 
   constructor(
@@ -21,13 +23,16 @@ export class EditOrderComponent implements OnInit {
     private router: Router,
     private menu: MenuService,
     private food: FoodService,
-    private order: OrderService
+    private order: OrderService,
+    private branchlist: BranchService
   ) {}
 
   checkadmin = this.user.isAdmin();
   isLoggedIn = this.user.isLoggedIn();
 
   allfood: any = [];
+
+  templist: any = [];
 
   dropdownList: any = [];
   selectedItems = [];
@@ -39,19 +44,35 @@ export class EditOrderComponent implements OnInit {
     console.log(id);
     this.order.getAllOrder().subscribe((data) => {
       this.result = data;
+      console.log(this.result);
       for (let r of this.result) {
         if (r.id == id) {
           this.selectedOrder = r;
           this.selectedItems = r.foods;
           //this.temp = this.selectedItems;
           //console.log(this.dropdownList);
-          console.log(this.selectedItems);
+          // console.log(this.selectedItems);
+          // console.log(this.selectedOrder.branch.id);
         }
       }
     });
+    this.branchlist.getBranchList().subscribe((data) => {
+      this.list = data;
+      console.log(this.list);
+    });
     this.food.getAllFood().subscribe((data) => {
       this.allfood = data;
-      this.dropdownList = this.allfood.t;
+      if (localStorage.getItem('role') == 'admin') {
+        this.dropdownList = this.allfood.t;
+      } else {
+        for (let f of this.allfood.t) {
+          if (f.branch.id == localStorage.getItem('branch')) {
+            this.templist.push(f);
+          }
+        }
+        this.dropdownList = this.templist;
+        console.log(this.dropdownList);
+      }
     });
     this.dropdownSettings = {
       idField: 'id',
@@ -64,8 +85,7 @@ export class EditOrderComponent implements OnInit {
   };
 
   editOrder(form: NgForm) {
-    if (this.user.getRole() == 'bm') {
-      form.value.role = 'staff';
+    if (this.user.getRole() != 'admin') {
       this.branch.id = this.user.getBranch();
       form.value.branch = this.branch;
     } else {
@@ -82,7 +102,7 @@ export class EditOrderComponent implements OnInit {
       .subscribe((res) => {
         console.log(res);
       });
-    window.alert('Menu Updated sucessfully');
+    window.alert('Order Updated sucessfully');
     this.router.navigate(['orders']);
   }
 }

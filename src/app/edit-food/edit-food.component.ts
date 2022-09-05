@@ -40,7 +40,7 @@ export class EditFoodComponent implements OnInit {
       for (let r of this.result.t) {
         if (r.id == id) {
           this.selectedFood = r;
-          console.log(this.selectedFood);
+          console.log(this.selectedFood.category);
         }
       }
     });

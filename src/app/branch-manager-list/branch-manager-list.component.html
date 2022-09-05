@@ -1,12 +1,20 @@
-<div class="container" *ngIf="isLoggedIn">
-    <p>All Branch Managers List </p>
-    <form class="form-inline my-2 my-lg-0" #BMlist="ngForm" (ngSubmit)="managerlist(BMlist)">
-        <input class="form-control mr-sm-2" type="text" ngModel id="id" name="id" #id="ngModel"
-            placeholder="Enter branch id" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form><br>
+<div class="container">
+    <h3>All Branch Managers List </h3><br>
+    <!-- <div class="row">
+        <form class="form-inline my-2 my-lg-0 col-8" #BMlist="ngForm" (ngSubmit)="managerlist(BMlist)">
+            <input class="form-control mr-sm-2" type="text" ngModel id="id" name="id" #id="ngModel"
+                placeholder="Enter branch id" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <button class="col-4 btn btn-secondary align-right" (click)="addBM()">Add Branch Manager</button>
+    </div><br> -->
+    <div class="row">
+        <input class="form-control col-3" type="text" [(ngModel)]="value" placeholder="Enter branch id"
+            aria-label="Search">
+        <div class="col-5"></div>
+        <button class="set col-3 btn btn-secondary align-right" (click)="addBM()">Add Branch Manager</button>
+    </div><br>
     <div>
-        <button (click)="addBM()">Add Branch Manager</button>
         <table class="table">
             <thead class="thead-dark">
                 <tr>

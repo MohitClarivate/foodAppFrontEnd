@@ -31,12 +31,12 @@ export class FoodComponent implements OnInit {
   isLoggedIn = this.user.isLoggedIn();
 
   ngOnInit(): void {
-    if ((this.isLoggedIn = true)) {
-      this.food.getAllFood().subscribe((data) => {
-        this.allfood = data;
-        console.log(data);
-      });
-    }
+    this.value = localStorage.getItem('branch');
+    console.log(this.value);
+    this.food.getAllFood().subscribe((data) => {
+      this.allfood = data;
+      console.log(data);
+    });
   }
 
   //addmenu

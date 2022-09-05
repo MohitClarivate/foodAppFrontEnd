@@ -18,7 +18,7 @@
         <div class="form-group">
             <div class="dropdown">
                 <ng-multiselect-dropdown ngModel id="foods" name="foods" #foods="ngModel" [placeholder]="'Select foods'"
-                    [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="selectedItems" required>
+                    [settings]="dropdownSettings" [data]="dropdownList" required>
                 </ng-multiselect-dropdown>
             </div>
             <div *ngIf="(add.submitted || foods.invalid && foods.touched) && foods.errors" style="color: red;">
@@ -26,8 +26,12 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" ngModel id="status" name="status" #status="ngModel"
-                placeholder="Enter order status" required>
+            <select class="form-control" ngModel id="status" name="status" #status="ngModel" required>
+                <option disabled selected value>Select status</option>
+                <option>Order Placed</option>
+                <option>Order Prepairing</option>
+                <option>Order Delivered</option>
+            </select>
             <div *ngIf="(add.submitted || status.invalid && status.touched) && status.errors" style="color: red;">
                 <div *ngIf="status.errors['required']"><sup>*</sup>status is required</div>
             </div>

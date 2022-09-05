@@ -27,6 +27,7 @@ export class AddOrderComponent implements OnInit {
   allfood: any = [];
   index: any;
   result: any;
+  templist: any = [];
 
   checkadmin = this.user.isAdmin();
 
@@ -42,7 +43,17 @@ export class AddOrderComponent implements OnInit {
     });
     this.food.getAllFood().subscribe((data) => {
       this.allfood = data;
-      this.dropdownList = this.allfood.t;
+      if (localStorage.getItem('role') == 'admin') {
+        this.dropdownList = this.allfood.t;
+      } else {
+        for (let f of this.allfood.t) {
+          if (f.branch.id == localStorage.getItem('branch')) {
+            this.templist.push(f);
+          }
+        }
+        this.dropdownList = this.templist;
+        console.log(this.dropdownList);
+      }
     });
     this.dropdownSettings = {
       idField: 'id',

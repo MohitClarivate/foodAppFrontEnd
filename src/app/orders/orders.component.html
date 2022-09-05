@@ -1,6 +1,8 @@
 <div class="container" *ngIf="isLoggedIn">
-    <p>All Order List </p>
-    <button (click)="AddOrder()"><a class="dropdown-item">Add Order</a></button>
+    <div class="row">
+        <h3 class="col-8">All Order List </h3><br>
+        <button class="col-4 btn btn-secondary align-right" (click)="AddOrder()">Add Order</button>
+    </div><br>
     <div>
         <table class="table">
             <thead class="thead-dark">
@@ -18,7 +20,7 @@
                     <th scope="col">Bill</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let r of allorder">
+            <tbody *ngFor="let r of allorder | staffList:value ">
                 <tr (click)="displayOrder(r.id)">
                     <td>{{r.id}}</td>
                     <td data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"

@@ -32,6 +32,8 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.user.getRole() == 'admin' || this.user.getRole() == 'bm') {
+      this.value = localStorage.getItem('branch');
+      console.log(this.value);
       this.menu.getAllMenu().subscribe((data) => {
         this.allmenu = data;
         console.log(data);

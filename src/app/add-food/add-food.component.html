@@ -12,18 +12,45 @@
             <input type="text" class="form-control" ngModel id="img" name="img" #img="ngModel"
                 placeholder="Enter food image">
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" ngModel id="category" name="category" #category="ngModel"
-                placeholder="Enter food category" required>
-            <div *ngIf="(add.submitted || category.invalid && category.touched) && category.errors" style="color: red;">
-                <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
+        <div class="row">
+            <div class="form-group col-6">
+                <select class="form-control" ngModel id="category" name="category" #category="ngModel" required>
+                    <option disabled selected value>Select category</option>
+                    <option>Veg</option>
+                    <option>Non-Veg</option>
+                </select>
+                <div *ngIf="(add.submitted || category.invalid && category.touched) && category.errors"
+                    style="color: red;">
+                    <div *ngIf="category.errors['required']"><sup>*</sup>category is required</div>
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <select class="form-control" ngModel id="type" name="type" #type="ngModel" required>
+                    <option disabled selected value>Select type</option>
+                    <option>Pizza</option>
+                    <option>Burger</option>
+                    <option>Pasta</option>
+                </select>
+                <div *ngIf="(add.submitted || type.invalid && type.touched) && type.errors" style="color: red;">
+                    <div *ngIf="type.errors['required']"><sup>*</sup>type is required</div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" ngModel id="type" name="type" #type="ngModel"
-                placeholder="Enter food type" required>
-            <div *ngIf="(add.submitted || type.invalid && type.touched) && type.errors" style="color: red;">
-                <div *ngIf="type.errors['required']"><sup>*</sup>type is required</div>
+        <div class="row">
+            <div class="form-group col-6">
+                <input type="number" min="1" class="form-control" ngModel id="price" name="price" #price="ngModel"
+                    placeholder="Enter food price" required>
+                <div *ngIf="(add.submitted || price.invalid && price.touched) && price.errors" style="color: red;">
+                    <div *ngIf="price.errors['required']"><sup>*</sup>price is required</div>
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <input type="number" min="1" class="form-control" ngModel id="availability" name="availability"
+                    #availability="ngModel" placeholder="Enter food availability" required>
+                <div *ngIf="(add.submitted || availability.invalid && availability.touched) && availability.errors"
+                    style="color: red;">
+                    <div *ngIf="availability.errors['required']"><sup>*</sup>availability is required</div>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -32,21 +59,6 @@
             <div *ngIf="(add.submitted || description.invalid && description.touched) && description.errors"
                 style="color: red;">
                 <div *ngIf="description.errors['required']"><sup>*</sup>description is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <input type="number" class="form-control" ngModel id="price" name="price" #price="ngModel"
-                placeholder="Enter food price" required>
-            <div *ngIf="(add.submitted || price.invalid && price.touched) && price.errors" style="color: red;">
-                <div *ngIf="price.errors['required']"><sup>*</sup>price is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <input type="number" class="form-control" ngModel id="availability" name="availability"
-                #availability="ngModel" placeholder="Enter food availability" required>
-            <div *ngIf="(add.submitted || availability.invalid && availability.touched) && availability.errors"
-                style="color: red;">
-                <div *ngIf="availability.errors['required']"><sup>*</sup>availability is required</div>
             </div>
         </div>
         <div class="form-group" *ngIf="checkadmin">

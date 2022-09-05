@@ -21,6 +21,8 @@ export class StaffListComponent implements OnInit {
     private user: UserService
   ) {}
 
+  checkadmin = this.user.isAdmin();
+
   ngOnInit(): void {
     if (this.user.getRole() == 'admin' || this.user.getRole() == 'bm') {
       this.value = localStorage.getItem('branch');
@@ -34,6 +36,11 @@ export class StaffListComponent implements OnInit {
       window.alert('Only for Admin and Branch Managers');
       this.router.navigate(['orders']);
     }
+  }
+
+  staffList(form: NgForm) {
+    this.value = form.value.id;
+    //console.log(this.value);
   }
 
   //delete staff by id

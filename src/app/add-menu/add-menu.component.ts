@@ -24,11 +24,11 @@ export class AddMenuComponent implements OnInit {
 
   allfood: any = [];
   result: any;
+  templist: any = [];
 
   isLoggedIn = this.user.isLoggedIn();
 
   dropdownList: any = [];
-  selectedItems = [];
   dropdownSettings = {};
 
   ngOnInit(): void {
@@ -39,10 +39,19 @@ export class AddMenuComponent implements OnInit {
       this.branchlist.getBranchList().subscribe((data) => {
         this.result = data;
       });
-
       this.food.getAllFood().subscribe((data) => {
         this.allfood = data;
-        this.dropdownList = this.allfood.t;
+        if (localStorage.getItem('role') == 'admin') {
+          this.dropdownList = this.allfood.t;
+        } else {
+          for (let f of this.allfood.t) {
+            if (f.branch.id == localStorage.getItem('branch')) {
+              this.templist.push(f);
+            }
+          }
+          this.dropdownList = this.templist;
+          console.log(this.dropdownList);
+        }
       });
       this.dropdownSettings = {
         idField: 'id',

@@ -18,9 +18,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Update order status</label>
-            <input type="text" class="form-control" ngModel id="status" name="status" #status="ngModel"
+            <select class="form-control" ngModel id="status" name="status" #status="ngModel"
                 [(ngModel)]="selectedOrder.status" required>
+                <option disabled selected value>Select status</option>
+                <option>Order Placed</option>
+                <option>Order Prepairing</option>
+                <option>Order Delivered</option>
+            </select>
             <div *ngIf="(edit.submitted || status.invalid && status.touched) && status.errors" style="color: red;">
                 <div *ngIf="status.errors['required']"><sup>*</sup>status is required</div>
             </div>
@@ -37,10 +41,12 @@
                 <div *ngIf="foods.errors['required']"><sup>*</sup>foods is required</div>
             </div>
         </div>
-        <div class="form-group">
-            <label>Update order branch</label>
-            <input type="text" class="form-control" ngModel id="branch" name="branch" #branch="ngModel"
+        <div class="form-group" *ngIf="checkadmin">
+            <select class="form-control form-control-sm" ngModel id="branch" name="branch" #branch="ngModel"
                 [(ngModel)]="selectedOrder.branch.id" required>
+                <option disabled selected value>Update order Branch</option>
+                <option *ngFor="let r of list.t" value={{r.id}}>{{r.id}}. {{r.name}}, {{r.city}}</option>
+            </select>
             <div *ngIf="(edit.submitted || branch.invalid && branch.touched) && branch.errors" style="color: red;">
                 <div *ngIf="branch.errors['required']"><sup>*</sup>branch is required</div>
             </div>

@@ -21,12 +21,12 @@ export class OrdersComponent implements OnInit {
   isLoggedIn = this.user.isLoggedIn();
 
   ngOnInit(): void {
-    if ((this.isLoggedIn = true)) {
-      this.order.getAllOrder().subscribe((data) => {
-        this.allorder = data;
-        console.log(data);
-      });
-    }
+    this.value = localStorage.getItem('branch');
+    console.log(this.value);
+    this.order.getAllOrder().subscribe((data) => {
+      this.allorder = data;
+      console.log(data);
+    });
   }
 
   //addmenu

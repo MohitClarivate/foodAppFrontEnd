@@ -1,3 +1,4 @@
+<img src="../../assets/login6.jpg" class="image">
 <div class="container border">
     <h3>Login!</h3><br>
     <form #logData="ngForm" (ngSubmit)="logData.form.valid && loginUser(logData)">
@@ -17,7 +18,6 @@
                 <div *ngIf="password.errors['required']"><sup>*</sup>Password is required</div>
             </div>
         </div><br>
-
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 </div>

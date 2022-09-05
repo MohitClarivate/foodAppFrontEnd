@@ -1,7 +1,11 @@
 <div class="container">
-    <p>All Branch Managers List </p>
+    <div class="row">
+        <h3 class="col-8">All Staff Member's List</h3>
+        <button class="set col-3 btn btn-secondary align-right" [routerLink]="['/adduser']">Add Staff</button>
+    </div><br>
+    <input *ngIf="checkadmin" class="form-control col-3" type="text" [(ngModel)]="value" placeholder="Enter branch id"
+        aria-label="Search"><br>
     <div>
-        <button [routerLink]="['/adduser']">Add Staff</button>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -15,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let r of allstaff | staffList:value ">
+                <tr *ngFor="let r of allstaff | staffList:value">
                     <td>{{r.id}}</td>
                     <td>{{r.name}}</td>
                     <td>{{r.email}}</td>

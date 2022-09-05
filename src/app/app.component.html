@@ -31,8 +31,13 @@
         <a routerLink="orders" class="nav-link" href="#">Orders </a>
       </li>
     </ul>
-    <button *ngIf="isLoggedout()" routerLink="loginuser">Login</button>
-    <button *ngIf="isLoggedin()" (click)="logOut()">Logout</button>
+    <div class="small" *ngIf="currentuser()">
+      <div class="one small">Logged in as- </div>
+      <div class="two small"><small>Name: {{name}}<br>Role: {{role}}</small>
+      </div>
+    </div>
+    <button class="btn btn-outline-success" *ngIf="isLoggedout()" routerLink="loginuser">Login</button>
+    <button class="btn btn-outline-danger" *ngIf="isLoggedin()" (click)="logOut()">Logout</button>
   </div>
 </nav>
 <router-outlet></router-outlet>

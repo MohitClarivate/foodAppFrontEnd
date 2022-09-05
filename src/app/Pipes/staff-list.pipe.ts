@@ -1,41 +1,24 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { UserService } from '../Services/user.service';
 
 @Pipe({
   name: 'staffList',
 })
 export class StaffListPipe implements PipeTransform {
-  constructor(private user: UserService) {}
+  transform(value: any, id: any): any {
+    console.log(value);
+    console.log(id);
 
-  result: any;
-
-  transform(list: any, value: any): any {
-    // console.log(value);
-    console.log(list);
-    const users = [];
-
-    if (value == null) {
-      return list;
+    if (id == null || value.length == 0 || id == '') {
+      return value;
     }
-
-    for (let u of list) {
-      if (u.branch != null) {
-        if (u.branch.id == value) {
-          users.push(u);
-        }
+    const users = [];
+    for (const user of value) {
+      if (user.branch.id == id) {
+        users.push(user);
       }
     }
-    return users;
+    console.log(users);
 
-    // this.user.getAllUser().subscribe((data) => {
-    //   this.result = data;
-    //   const users = [];
-    //   for (const user of this.result.t) {
-    //     if (user.branch.id == value) {
-    //       users.push(user);
-    //     }
-    //   }
-    //   return users;
-    // });
+    return users;
   }
 }

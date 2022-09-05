@@ -13,6 +13,7 @@ import { UserService } from '../Services/user.service';
 })
 export class EditMenuComponent implements OnInit {
   result: any;
+  list: any;
   selectedMenu: any;
 
   constructor(
@@ -20,13 +21,15 @@ export class EditMenuComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private menu: MenuService,
-    private food: FoodService
+    private food: FoodService,
+    private branchlist: BranchService
   ) {}
 
   checkadmin = this.user.isAdmin();
   isLoggedIn = this.user.isLoggedIn();
 
   allfood: any = [];
+  templist: any = [];
 
   dropdownList: any = [];
   selectedItems = [];
@@ -48,9 +51,23 @@ export class EditMenuComponent implements OnInit {
         }
       }
     });
+    this.branchlist.getBranchList().subscribe((data) => {
+      this.list = data;
+      console.log(this.list);
+    });
     this.food.getAllFood().subscribe((data) => {
       this.allfood = data;
-      this.dropdownList = this.allfood.t;
+      if (localStorage.getItem('role') == 'admin') {
+        this.dropdownList = this.allfood.t;
+      } else {
+        for (let f of this.allfood.t) {
+          if (f.branch.id == localStorage.getItem('branch')) {
+            this.templist.push(f);
+          }
+        }
+        this.dropdownList = this.templist;
+        console.log(this.dropdownList);
+      }
     });
     this.dropdownSettings = {
       idField: 'id',
