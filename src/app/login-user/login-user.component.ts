@@ -36,7 +36,7 @@ export class LoginUserComponent implements OnInit {
             localStorage.setItem('branch', this.branch);
           }
         }
-        console.log(res);
+        //console.log(res);
         if (this.user.getRole() == 'admin') {
           window.alert('Welcome ' + this.name + ' you are logged in!');
           return this.router.navigate(['branchlist']);
@@ -51,7 +51,7 @@ export class LoginUserComponent implements OnInit {
         }
       },
       (err) => {
-        console.log(err);
+        //console.log(err);
         window.alert(err.error.message);
       }
     );

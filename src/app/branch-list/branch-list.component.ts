@@ -26,7 +26,7 @@ export class BranchListComponent implements OnInit {
     if (this.user.getRole() == 'admin') {
       this.branchlist.getBranchList().subscribe((data) => {
         this.allbranch = data;
-        console.log(data);
+        //console.log(data);
       });
     } else if (this.user.getRole() == 'bm') {
       window.alert('not authorized');
@@ -49,7 +49,7 @@ export class BranchListComponent implements OnInit {
   //delete branch by id
   deleteBranch(id: any) {
     this.branchlist.deleteBranch(id).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
       window.alert('Branch deleted sucessfully');
       this.branchlist.getBranchList().subscribe((data) => {
         this.allbranch = data;

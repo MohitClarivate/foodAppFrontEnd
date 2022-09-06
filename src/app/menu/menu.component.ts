@@ -33,10 +33,10 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     if (this.user.getRole() == 'admin' || this.user.getRole() == 'bm') {
       this.value = localStorage.getItem('branch');
-      console.log(this.value);
+      //console.log(this.value);
       this.menu.getAllMenu().subscribe((data) => {
         this.allmenu = data;
-        console.log(data);
+        //console.log(data);
       });
     } else if (this.user.getRole() == 'staff') {
       window.alert('Only for admin and Branch Managers!');
@@ -57,12 +57,12 @@ export class MenuComponent implements OnInit {
   //delete bm by id
   deleteMenu(id: any) {
     this.menu.deleteMenu(id).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
       window.alert('Menu deleted sucessfully');
       //this.ngOnInit();
       this.menu.getAllMenu().subscribe((data) => {
         this.allmenu = data;
-        console.log(data);
+        //console.log(data);
       });
     });
   }
@@ -70,7 +70,7 @@ export class MenuComponent implements OnInit {
   //delete food
   deleteFood(id: any) {
     this.food.deleteFood(id).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
       window.alert('Food deleted sucessfully');
       //
     });

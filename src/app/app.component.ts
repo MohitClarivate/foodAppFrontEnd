@@ -48,9 +48,10 @@ export class AppComponent {
   }
 
   logOut() {
-    localStorage.removeItem('role');
-    localStorage.removeItem('branch');
-    localStorage.removeItem('name');
+    localStorage.clear();
+    // localStorage.removeItem('role');
+    // localStorage.removeItem('branch');
+    // localStorage.removeItem('name');
     window.alert('logged out succesfully');
     this.router.navigate(['loginuser']);
   }

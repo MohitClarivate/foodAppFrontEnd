@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ManagerListPipe implements PipeTransform {
   transform(value: any, id: any): any {
-    console.log(value);
-    console.log(id);
+    //console.log(value);
+    //console.log(id);
 
     if (id == undefined || value.length == 0 || id == '') {
       return value;

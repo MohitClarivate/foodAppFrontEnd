@@ -1,9 +1,13 @@
+.user{
+    color: aliceblue;
+    margin-right: 50px;
+}
+
 .one{
     float: left;
 }
 
 .two{
     float: right;
-    margin-right: 150px;
-    margin-left: 10px;
+   margin-left: 10px;
 }

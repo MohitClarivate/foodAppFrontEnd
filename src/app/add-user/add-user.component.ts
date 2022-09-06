@@ -45,15 +45,15 @@ export class AddUserComponent implements OnInit {
       this.branch.id = form.value.branch;
       form.value.branch = this.branch;
     }
-    console.log(form.value);
+    //console.log(form.value);
     this.user.addUser(form.value).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         window.alert('User added Succesfully');
         this.router.navigate(['stafflist']);
       },
       (err) => {
-        console.log(err);
+        //console.log(err);
         window.alert(err.error.message);
       }
     );

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
-        <h3 class="col-8">All Menu List </h3><br>
-        <button class="col-4 btn btn-secondary align-right" (click)="AddMenu()">Add Menu</button>
+        <h3 class="col-9">All Menu List </h3><br>
+        <button class="col-3 btn btn-success align-right" (click)="AddMenu()">Add Menu</button>
     </div><br>
     <div>
         <table class="table">
@@ -24,7 +24,7 @@
                     <td>{{r.branch.id}}</td>
                     <td><button class="btn btn-primary" type="button" [routerLink]="['/editmenu',r.id]">Update</button>
                     </td>
-                    <td><button class="btn btn-secondary" type="button" (click)="deleteMenu(r.id)">Delete</button>
+                    <td><button class="btn btn-danger" type="button" (click)="deleteMenu(r.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>

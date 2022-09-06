@@ -22,7 +22,7 @@ export class EditBranchComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
-    console.log(id);
+    //console.log(id);
     this.branch.getBranchList().subscribe((data) => {
       this.result = data;
 
@@ -44,11 +44,11 @@ export class EditBranchComponent implements OnInit {
     //   this.branch.id = form.value.branch;
     //   form.value.branch = this.branch;
     // }
-    console.log(form.value);
+    //console.log(form.value);
     this.branch
       .updateBranch(this.selectedBranch.id, form.value)
       .subscribe((res) => {
-        console.log(res);
+        //console.log(res);
       });
     window.alert('Updated sucessfully');
     this.router.navigate(['branchlist']);

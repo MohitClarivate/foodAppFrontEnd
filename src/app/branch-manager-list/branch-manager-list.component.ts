@@ -27,7 +27,7 @@ export class BranchManagerListComponent implements OnInit {
     if (this.user.getRole() == 'admin') {
       this.branchlist.getAllBM().subscribe((data) => {
         this.allbM = data;
-        console.log(data);
+        //console.log(data);
       });
     } else if (this.user.getRole() == 'bm') {
       window.alert('Only for Admin');
@@ -51,9 +51,12 @@ export class BranchManagerListComponent implements OnInit {
   //delete bm by id
   deleteBM(id: any) {
     this.user.deleteUser(id).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
       window.alert('Branch Manager deleted sucessfully');
-      //
+      this.branchlist.getAllBM().subscribe((data) => {
+        this.allbM = data;
+        //console.log(data);
+      });
     });
   }
 }

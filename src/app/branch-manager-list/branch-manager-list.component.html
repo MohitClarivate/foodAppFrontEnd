@@ -1,22 +1,14 @@
 <div class="container">
     <h3>All Branch Managers List </h3><br>
-    <!-- <div class="row">
-        <form class="form-inline my-2 my-lg-0 col-8" #BMlist="ngForm" (ngSubmit)="managerlist(BMlist)">
-            <input class="form-control mr-sm-2" type="text" ngModel id="id" name="id" #id="ngModel"
-                placeholder="Enter branch id" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <button class="col-4 btn btn-secondary align-right" (click)="addBM()">Add Branch Manager</button>
-    </div><br> -->
     <div class="row">
         <input class="form-control col-3" type="text" [(ngModel)]="value" placeholder="Enter branch id"
             aria-label="Search">
         <div class="col-5"></div>
-        <button class="set col-3 btn btn-secondary align-right" (click)="addBM()">Add Branch Manager</button>
+        <button class="set col-3 btn btn-success align-right" (click)="addBM()">Add Branch Manager</button>
     </div><br>
     <div>
         <table class="table">
-            <thead class="thead-dark">
+            <thead class="thead-light">
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
@@ -38,7 +30,7 @@
                     <td>{{r.branch.id}}</td>
                     <td><button class="btn btn-primary" type="button" [routerLink]="['/edituser',r.id]">Update</button>
                     </td>
-                    <td><button class="btn btn-secondary" type="button" (click)="deleteBM(r.id)">Delete</button>
+                    <td><button class="btn btn-danger" type="button" (click)="deleteBM(r.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>

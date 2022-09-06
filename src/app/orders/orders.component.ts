@@ -22,10 +22,10 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.value = localStorage.getItem('branch');
-    console.log(this.value);
+    //console.log(this.value);
     this.order.getAllOrder().subscribe((data) => {
       this.allorder = data;
-      console.log(data);
+      //console.log(data);
     });
   }
 
@@ -42,12 +42,12 @@ export class OrdersComponent implements OnInit {
   //delete bm by id
   deleteOrder(id: any) {
     this.order.deleteOrder(id).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
       window.alert('Order deleted sucessfully');
       //this.ngOnInit();
       this.order.getAllOrder().subscribe((data) => {
         this.allorder = data;
-        console.log(data);
+        //console.log(data);
       });
     });
   }

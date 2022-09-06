@@ -38,7 +38,7 @@ export class EditMenuComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
-    console.log(id);
+    //console.log(id);
     this.menu.getAllMenu().subscribe((data) => {
       this.result = data;
       for (let r of this.result.t) {
@@ -47,13 +47,13 @@ export class EditMenuComponent implements OnInit {
           this.selectedItems = r.foods;
           //this.temp = this.selectedItems;
           //console.log(this.dropdownList);
-          console.log(this.selectedItems);
+          //console.log(this.selectedItems);
         }
       }
     });
     this.branchlist.getBranchList().subscribe((data) => {
       this.list = data;
-      console.log(this.list);
+      //console.log(this.list);
     });
     this.food.getAllFood().subscribe((data) => {
       this.allfood = data;
@@ -66,7 +66,7 @@ export class EditMenuComponent implements OnInit {
           }
         }
         this.dropdownList = this.templist;
-        console.log(this.dropdownList);
+        //console.log(this.dropdownList);
       }
     });
     this.dropdownSettings = {
@@ -90,11 +90,11 @@ export class EditMenuComponent implements OnInit {
     }
     // form.value.foods = this.temp;
     // console.log(this.temp);
-    console.log(this.selectedItems);
+    //console.log(this.selectedItems);
 
     console.log(form.value);
     this.menu.updateMenu(this.selectedMenu.id, form.value).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
     });
     window.alert('Menu Updated sucessfully');
     this.router.navigate(['menu']);

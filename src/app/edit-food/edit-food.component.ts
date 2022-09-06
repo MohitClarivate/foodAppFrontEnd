@@ -33,23 +33,23 @@ export class EditFoodComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
-    console.log(id);
+    //console.log(id);
     this.food.getAllFood().subscribe((data) => {
       this.result = data;
 
       for (let r of this.result.t) {
         if (r.id == id) {
           this.selectedFood = r;
-          console.log(this.selectedFood.category);
+          //console.log(this.selectedFood.category);
         }
       }
     });
   }
 
   editFood(form: NgForm) {
-    console.log(form.value);
+    //console.log(form.value);
     this.food.updateFood(this.selectedFood.id, form.value).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
     });
     window.alert('Food Updated sucessfully');
     this.router.navigate(['food']);

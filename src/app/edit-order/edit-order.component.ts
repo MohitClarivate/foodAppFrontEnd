@@ -41,10 +41,10 @@ export class EditOrderComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
-    console.log(id);
+    //console.log(id);
     this.order.getAllOrder().subscribe((data) => {
       this.result = data;
-      console.log(this.result);
+      //console.log(this.result);
       for (let r of this.result) {
         if (r.id == id) {
           this.selectedOrder = r;
@@ -58,7 +58,7 @@ export class EditOrderComponent implements OnInit {
     });
     this.branchlist.getBranchList().subscribe((data) => {
       this.list = data;
-      console.log(this.list);
+      //console.log(this.list);
     });
     this.food.getAllFood().subscribe((data) => {
       this.allfood = data;
@@ -71,7 +71,7 @@ export class EditOrderComponent implements OnInit {
           }
         }
         this.dropdownList = this.templist;
-        console.log(this.dropdownList);
+        //console.log(this.dropdownList);
       }
     });
     this.dropdownSettings = {
@@ -94,13 +94,13 @@ export class EditOrderComponent implements OnInit {
     }
     // form.value.foods = this.temp;
     // console.log(this.temp);
-    console.log(this.selectedItems);
+    //console.log(this.selectedItems);
 
-    console.log(form.value);
+    //console.log(form.value);
     this.order
       .updateOrder(this.selectedOrder.id, form.value)
       .subscribe((res) => {
-        console.log(res);
+        //console.log(res);
       });
     window.alert('Order Updated sucessfully');
     this.router.navigate(['orders']);

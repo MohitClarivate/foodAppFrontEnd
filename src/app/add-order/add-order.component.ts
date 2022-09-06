@@ -52,7 +52,7 @@ export class AddOrderComponent implements OnInit {
           }
         }
         this.dropdownList = this.templist;
-        console.log(this.dropdownList);
+        //console.log(this.dropdownList);
       }
     });
     this.dropdownSettings = {

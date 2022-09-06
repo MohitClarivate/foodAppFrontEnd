@@ -24,11 +24,11 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
-    console.log(id);
+    //console.log(id);
     this.user.getAllUserById(id).subscribe((data) => {
       this.result = data;
       this.selectedUser = this.result.t;
-      console.log(this.selectedUser);
+      //console.log(this.selectedUser);
     });
   }
 
@@ -41,9 +41,9 @@ export class EditUserComponent implements OnInit {
       this.branch.id = form.value.branch;
       form.value.branch = this.branch;
     }
-    console.log(form.value);
+    //console.log(form.value);
     this.user.updateUser(this.selectedUser.id, form.value).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
     });
     window.alert('Updated sucessfully');
     this.router.navigate(['stafflist']);

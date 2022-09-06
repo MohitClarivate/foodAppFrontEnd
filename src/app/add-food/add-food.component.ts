@@ -43,15 +43,15 @@ export class AddFoodComponent implements OnInit {
       this.branch.id = form.value.branch;
       form.value.branch = this.branch;
     }
-    console.log(form.value);
+    //console.log(form.value);
     this.food.addFood(form.value).subscribe(
       (res) => {
-        console.log(res);
+        //console.log(res);
         window.alert('Food added Succesfully');
         this.router.navigate(['food']);
       },
       (err) => {
-        console.log(err);
+        //console.log(err);
         window.alert(err.error.message);
       }
     );

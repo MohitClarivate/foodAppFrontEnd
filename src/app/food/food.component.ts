@@ -32,10 +32,10 @@ export class FoodComponent implements OnInit {
 
   ngOnInit(): void {
     this.value = localStorage.getItem('branch');
-    console.log(this.value);
+    //console.log(this.value);
     this.food.getAllFood().subscribe((data) => {
       this.allfood = data;
-      console.log(data);
+      //console.log(data);
     });
   }
 

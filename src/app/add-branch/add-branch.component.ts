@@ -33,15 +33,15 @@ export class AddBranchComponent implements OnInit {
 
   addBranch(form: NgForm) {
     if (this.user.getRole() == 'admin') {
-      console.log(form.value);
+      //console.log(form.value);
       this.branch.addBranch(form.value).subscribe(
         (res) => {
-          console.log(res);
+          //console.log(res);
           window.alert('Branch added Succesfully');
           this.router.navigate(['branchlist']);
         },
         (err) => {
-          console.log(err);
+          //console.log(err);
           window.alert(err.error.message);
         }
       );

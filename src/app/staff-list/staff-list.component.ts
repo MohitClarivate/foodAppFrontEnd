@@ -14,6 +14,7 @@ export class StaffListComponent implements OnInit {
   allstaff: any;
   value: any;
   errorMsg: any;
+  searchString: string = '';
 
   constructor(
     private branchlist: BranchService,
@@ -26,11 +27,9 @@ export class StaffListComponent implements OnInit {
   ngOnInit(): void {
     if (this.user.getRole() == 'admin' || this.user.getRole() == 'bm') {
       this.value = localStorage.getItem('branch');
-      console.log(this.value);
 
       this.user.getAllStaff().subscribe((data) => {
         this.allstaff = data;
-        console.log(data);
       });
     } else if (this.user.getRole() == 'staff') {
       window.alert('Only for Admin and Branch Managers');
@@ -40,15 +39,15 @@ export class StaffListComponent implements OnInit {
 
   staffList(form: NgForm) {
     this.value = form.value.id;
-    //console.log(this.value);
   }
 
   //delete staff by id
   deleteStaff(id: any) {
     this.user.deleteUser(id).subscribe((res) => {
-      console.log(res);
       window.alert('Staff Member deleted sucessfully');
-      //
+      this.user.getAllStaff().subscribe((data) => {
+        this.allstaff = data;
+      });
     });
   }
 }

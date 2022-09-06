@@ -25,10 +25,10 @@ export class BillComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
-    console.log(id);
+    //console.log(id);
     this.bill.getBill(id).subscribe((data) => {
       this.result = data;
-      console.log(this.result);
+      //console.log(this.result);
     });
     this.order.getAllOrder().subscribe((data) => {
       this.result = data;
@@ -40,7 +40,7 @@ export class BillComponent implements OnInit {
           this.gst = this.grossamount * 0.12;
           this.servicecharge = this.grossamount * 0.05;
           this.netamount = this.grossamount + this.gst + this.servicecharge;
-          console.log(this.selectedOrder);
+          //console.log(this.selectedOrder);
         }
       }
     });

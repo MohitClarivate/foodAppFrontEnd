@@ -1,7 +1,7 @@
 <div class="container" *ngIf="isLoggedIn">
     <div class="row">
-        <h3 class="col-8">All Order List </h3><br>
-        <button class="col-4 btn btn-secondary align-right" (click)="AddOrder()">Add Order</button>
+        <h3 class="col-9">All Order List </h3><br>
+        <button class="col-3 btn btn-success align-right" (click)="AddOrder()">Add Order</button>
     </div><br>
     <div>
         <table class="table">
@@ -33,9 +33,9 @@
                     <td>{{r.branch.id}}</td>
                     <td><button class="btn btn-primary" type="button" [routerLink]="['/editorder',r.id]">Update</button>
                     </td>
-                    <td><button class="btn btn-secondary" type="button" (click)="deleteOrder(r.id)">Delete</button>
+                    <td><button class="btn btn-danger" type="button" (click)="deleteOrder(r.id)">Delete</button>
                     </td>
-                    <td><button class="btn btn-secondary" type="button" [routerLink]="['/bill',r.id]">Bill</button>
+                    <td><button class="btn btn-info" type="button" [routerLink]="['/bill',r.id]">Bill</button>
                     </td>
                 </tr>
             </tbody>

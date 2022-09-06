@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">FoodApp</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,13 +31,13 @@
         <a routerLink="orders" class="nav-link" href="#">Orders </a>
       </li>
     </ul>
-    <div class="small" *ngIf="currentuser()">
+    <div class="small user" *ngIf="currentuser()">
       <div class="one small">Logged in as- </div>
       <div class="two small"><small>Name: {{name}}<br>Role: {{role}}</small>
       </div>
     </div>
-    <button class="btn btn-outline-success" *ngIf="isLoggedout()" routerLink="loginuser">Login</button>
-    <button class="btn btn-outline-danger" *ngIf="isLoggedin()" (click)="logOut()">Logout</button>
+    <button class="btn btn-success " *ngIf="isLoggedout()" routerLink="loginuser">Login</button>
+    <button class="btn btn-danger" *ngIf="isLoggedin()" (click)="logOut()">Logout</button>
   </div>
 </nav>
 <router-outlet></router-outlet>

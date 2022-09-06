@@ -27,6 +27,7 @@ import { HomeComponentComponent } from './home-component/home-component.componen
 import { BillComponent } from './bill/bill.component';
 import { StaffListComponent } from './staff-list/staff-list.component';
 import { StaffListPipe } from './Pipes/staff-list.pipe';
+import { FilternamePipe } from './Pipes/filtername.pipe';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { StaffListPipe } from './Pipes/staff-list.pipe';
     BillComponent,
     StaffListComponent,
     StaffListPipe,
+    FilternamePipe,
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class StaffListPipe implements PipeTransform {
   transform(value: any, id: any): any {
-    console.log(value);
-    console.log(id);
+    //console.log(value);
+    //console.log(id);
 
     if (id == null || value.length == 0 || id == '') {
       return value;
@@ -17,7 +17,7 @@ export class StaffListPipe implements PipeTransform {
         users.push(user);
       }
     }
-    console.log(users);
+    //console.log(users);
 
     return users;
   }
